@@ -1,0 +1,85 @@
+/*アカウント登録画面、ログイン画面*/
+.user_form {
+  margin: 5rem 10rem ;
+  padding: 3rem;
+  border: 2px solid #ffc7af;
+  border-radius: 10px;
+  box-shadow: 2px 2px 2px 2px #ffc7af;
+  background-image: image-url('form_back.jpg');
+  font-family: sans-serif;
+  color: #666666;
+}
+
+.user_form_title {
+  margin-bottom: 1.5rem;
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.user_form_btn {
+  font-size: 1.3rem;
+  padding: 0.3rem 1rem;
+  margin: auto;
+  display: block;
+  background-color: white;
+  color: #666;
+  border-radius: 10px;
+  border: 2px solid #ffc7af;
+  box-shadow: none;
+}
+
+/*アカウント情報ページ*/
+.user_info_title {
+  margin-bottom: 3rem;
+  font-size: 1.5rem;
+  text-align: center;
+  text-decoration: underline;
+}
+
+.user_info_text {
+  font-size: 1.2rem;
+  text-align: center;
+}
+
+.user_info_row {
+  border-bottom: 1px solid #666
+}
+
+.user_info_links {
+  margin-top: 2rem;
+}
+
+.user_info_link {
+  color: #666;
+}
+
+.user_info_link:visited {
+  color: #666;
+}
+
+/*アカウント情報編集ページ*/
+.user_edit_back_btn {
+  font-size: 1rem;
+  color: #666;
+}
+
+/*エラー文*/
+.error_messages {
+  color: #830613;
+  padding: 1rem;
+  margin-bottom: 3rem;
+  border: 2px solid #aa1927;
+  background-color: white;
+  border-radius: 10px;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.error_messages h2 {
+  font-size: 1.2rem;
+}
+
+.field_with_errors {
+  display: contents;
+}

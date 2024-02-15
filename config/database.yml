@@ -50,6 +50,4 @@ test:
 #
 production:
   <<: *default
-  database: cooking_selector_production
-  username: cooking_selector
-  password: <%= ENV['COOKING_SELECTOR_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>

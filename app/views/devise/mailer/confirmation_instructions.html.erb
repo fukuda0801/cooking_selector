@@ -1,0 +1,5 @@
+<p>Cooking Selector へようこそ!! <%= @name %>様!</p>
+
+<p>下記リンクをクリックしてアカウントを登録してください。:</p>
+
+<p><%= link_to 'アカウントを登録する', confirmation_url(@resource, confirmation_token: @token) %></p>

@@ -23,6 +23,13 @@ services:
       - db
     stdin_open: true
     tty: true
+  selenium:
+    image: seleniarm/standalone-chromium
+    shm_size: 2gb
+    ports:
+      - "4444:4444"
+    volumes:
+      - /dev/shm:/dev/shm
     
 volumes:
   mysql-data:

@@ -1,0 +1,40 @@
+<div class="user_form">
+  <p class="user_info_title">アカウント情報</p>
+
+  <div class="row mb-3 user_info_row">
+    <label class="col-sm-2 col-form-label">アカウント名</label>
+    <div class="col-sm-10">
+      <p class="user_info_text"><%= @user.name %></p>
+    </div>
+  </div>
+
+  <div class="row mb-3 user_info_row">
+    <label class="col-sm-2 col-form-label">メールアドレス</label>
+    <div class="col-sm-10">
+      <p class="user_info_text"><%= @user.email %></p>
+    </div>
+  </div>
+
+  <div class="row mb-3 user_info_row">
+    <label class="col-sm-2 col-form-label">パスワード</label>
+    <div class="col-sm-10">
+      <p class="user_info_text">*******</p>
+    </div>
+  </div>
+
+  <div class="row mb-3 user_info_row">
+    <label class="col-sm-2 col-form-label">性別</label>
+    <div class="col-sm-10">
+      <p class="user_info_text"><%= @user.sex %></p>
+    </div>
+  </div>
+
+  <ul class="user_info_links">
+    <% if current_user.name == "ゲストユーザー" %>
+      <li>ゲストユーザーの方はアカウント情報を編集できません。</li>
+    <% else %>
+      <li>アカウント情報の編集は<span><%= link_to "こちら", edit_user_registration_path, class: "user_info_link" %></span>から</li>
+    <% end %>
+    <li><%= link_to "トップページに戻る", root_path, class: "user_info_link" %></li>
+  </ul>
+</div>
