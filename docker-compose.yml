@@ -24,8 +24,7 @@ services:
     stdin_open: true
     tty: true
   selenium:
-    image: selenium/standalone-chrome
-    platform: linux/amd64
+    image: seleniarm/standalone-chromium
     shm_size: 2gb
     ports:
       - "4444:4444"
