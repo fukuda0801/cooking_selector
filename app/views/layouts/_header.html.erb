@@ -1,0 +1,37 @@
+<div class="container-fluid header_main ">
+  <nav class="navbar navbar-expand-lg navbar-light py-3 py-lg-0 px-0 px-lg-5">
+    <%= link_to "RandomDish", root_path, class: "navbar-brand font-weight-bold text-secondary home_title", style: "font-size: 50px" %>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+      <div class="navbar-nav font-weight-bold mx-auto py-0 ">
+        <%= link_to "ランダム", root_path, class: "nav-item nav-link nav_title" %>
+        <%= link_to "条件指定", root_path, class: "nav-item nav-link nav_title" %>
+        <%= link_to "料理一覧", root_path, class: "nav-item nav-link nav_title" %>
+        <%= link_to "ランキング", root_path, class: "nav-item nav-link nav_title" %>
+      </div>
+      <% if user_signed_in? %>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle dropdown_login_btn" type="button id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+            <%= current_user.name %>
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <%= link_to "アカウント情報", user_path(current_user.id), class: "dropdown-item dropdown_item_link" %>
+            <%= link_to "設定", user_path(current_user.id), class: "dropdown-item dropdown_item_link" %>
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item dropdown_item_link" %>
+            <% if current_user.name == "ゲストユーザー" %>
+              <a href="" class="dropdown-item dropdown_item_link dropdown_item_disabled" tabindex="-1" aria-disabled="true">退会する</a>
+            <% else %>
+              <%= link_to "退会する", user_path(current_user.id), method: :delete, class: "dropdown-item dropdown_item_link", data: { confirm: "本当に削除しますか？" } %>
+            <% end %>
+          </ul>
+        </div>
+      <% else %>
+        <%= link_to "新規登録", new_user_registration_path, class: "btn btn-primary px-3 login_btn" %>
+        <%= link_to "ログイン", new_user_session_path, class: "btn btn-primary px-3 login_btn" %>
+        <%= link_to "ゲストログイン", users_guest_sign_in_path, method: :post, class: "btn btn-primary px-3 login_btn" %>
+      <% end %>
+    </div>
+  </nav>
+</div>

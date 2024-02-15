@@ -1,0 +1,76 @@
+/*ヘッダー部分*/
+.header_main {
+  border-bottom: 4px double #666;
+  margin-bottom: 0;
+  padding-bottom: 0;
+  position: sticky;
+  top: 0;
+  background-color: white;
+}
+
+.header_main .home_title {
+  font-size: 3rem;
+  font-weight: 400;
+  color: #666;
+  text-decoration: none;
+}
+
+.header_main .nav_title {
+  text-decoration: none;
+  color: #666;
+  font-size: 1.2 rem;
+}
+
+.header_main .login_btn {
+  font-size: 1rem;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  background-color: #ff4f50;
+  border: 2px solid #ff4f50;
+  padding: 0.3rem 1rem;
+  margin-right: 0.6rem;
+}
+
+.header_main .login_btn:hover {
+  background-color: white;
+  color: #ff4f50;
+  border: 2px solid #ff4f50;
+}
+
+.header_main .dropdown_login_btn {
+  background-color: #ff4f50;
+  color: white;
+  padding: 0.3rem 1rem;
+  margin-right: 0.6rem;
+  border: 2px solid #ff4f50;
+}
+
+.header_main .dropdown_login_btn:focus {
+  background-color: white;
+  color: #ff4f50;
+  border: 2px solid #ff4f50;
+}
+
+.header_main .dropdown_login_btn:hover {
+  background-color: white;
+  color: #ff4f50;
+  border: 2px solid #ff4f50;
+}
+
+.header_main .dropdown_login_btn:active {
+  background-color: white;
+  color: #ff4f50;
+  border: 2px solid #ff4f50;
+}
+
+.header_main .dropdown_item_link {
+  color: #666;
+  text-decoration: none;
+}
+
+.header_main .dropdown_item_disabled {
+  pointer-events: none;
+  color: #ccc;
+}
