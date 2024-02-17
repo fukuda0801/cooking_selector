@@ -4,4 +4,16 @@ class Dish < ApplicationRecord
   has_many :user_dishes
   has_many :users, through: :user_dishes
   has_one_attached :image
+
+  # Ransackで検索可能な関連付けを指定
+  def self.ransackable_associations(auth_object = nil)
+    # 検索に含めたい関連付けの名前の配列
+    ['tags']
+  end
+
+  # Ransackで検索可能な属性を指定
+  def self.ransackable_attributes(auth_object = nil)
+    # 検索に含めたい属性の名前の配列
+    %w[name description cook_time calorie]
+  end
 end
