@@ -1,10 +1,14 @@
 class DishesController < ApplicationController
   def show
     @dish = Dish.find(params[:id])
+    rakuten_service = RakutenRecipeService.new('1073376705435074167')
+    @recipes = rakuten_service.fetch_recipes(@dish.category_full_id)
   end
 
   def random
     @dish = Dish.includes(:tags).random
+    rakuten_service = RakutenRecipeService.new('1073376705435074167')
+    @recipes = rakuten_service.fetch_recipes(@dish.category_full_id)
   end
 
   def search

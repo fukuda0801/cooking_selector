@@ -2,7 +2,10 @@
   <div class="random_main">
     <h4 class="random_title">〜 本日の料理はこちら！！ 〜</h4>
     <p class="random_intro">ランダムで料理を1つ表示します。</p>
-    <%= link_to "もう一度選ぶ！", random_dishes_path, class: "random_dish_btn" %>
+    <div class="random_btn_group">
+      <%= link_to "もう一度選ぶ！", random_dishes_path, class: "random_dish_btn" %>
+      <%= link_to "トップページに戻る", root_path, class: "random_dish_btn" %>
+    </div>
     <div class="random_content">
       <%= image_tag(@dish.image) if @dish.image.attached? %>
       <div class="random_dish_details">
@@ -22,5 +25,23 @@
         <p class="random_dish_detail">説明 : <%= @dish.description %></p>
       </div>
     </div>
+  </div>
+  <div class="show_dish_recipe">
+    <p class="show_dish_recipe_title">関連するレシピ一覧 (楽天レシピ様より)</p>
+    <p class="show_dish_recipe_intro">レシピ名を選択すると外部サイトへ移動します。</p>
+    <% if @recipes["result"].present? %>
+      <div class="show_dish_recipes">
+        <ul>
+          <% @recipes["result"].each do |recipe| %>
+            <li>
+              <a href="<%= recipe["recipeUrl"] %>" target="_blank", class="show_dish_recipe_url"><%= recipe["recipeTitle"] %></a>
+              <p class="show_dish_recipe_intro"><%= recipe["recipeDescription"] %></p>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    <% else %>
+      <p>レシピが見つかりませんでした。</p>
+    <% end %>
   </div>
 </div>

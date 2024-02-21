@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_17_202904) do
+ActiveRecord::Schema.define(version: 2024_02_21_132228) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -84,6 +84,7 @@ ActiveRecord::Schema.define(version: 2024_02_17_202904) do
     t.datetime "updated_at", precision: 6, null: false
     t.string "difficulty"
     t.string "genre"
+    t.string "category_full_id"
   end
 
   create_table "tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

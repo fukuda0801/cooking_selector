@@ -10,7 +10,7 @@
 .random_title {
   font-size: 1.5rem;
   color: #666;
-  margin-bottom: 1rem;
+  margin: 1rem;
   text-decoration: underline;
 }
 
@@ -26,13 +26,18 @@
   border-radius: 1rem;
   color: white;
   font-size: 1.2rem;
-  padding: 0.5rem 2rem;
+  padding: 0.3rem 1.5rem;
+  margin-right: 2rem;
+  border: solid 2px #ff4f50;
 }
 
 .random_dish_btn:hover {
   background-color: white;
   color: #ff4f50;
-  border: solid 2px #ff4f50;
+}
+
+.random_btn_group {
+  display: flex;
 }
 
 .random_content {
@@ -205,4 +210,38 @@
   object-fit: contain;
   border: solid 2px #666;
   border-radius: 5px;
+}
+
+/* 料理詳細ページ */
+.show_dish_recipe {
+  padding: 1rem 3rem;
+  color: #666;
+}
+
+.show_dish_recipe_title {
+  font-size: 1.2rem;
+}
+
+.show_dish_recipes {
+  border: solid 2px #ff4f50;
+  border-radius: 1rem;
+  background-color: white;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.show_dish_recipe_url {
+  text-decoration: none;
+  color: #666;
+  font-size: 1.2rem;
+  background: linear-gradient(transparent 80%, #ff5656a1 70%);
+}
+
+.show_dish_recipe_url:hover {
+  color: #ff4f50;
+}
+
+.show_dish_recipe_intro {
+  font-size: 1rem;
+  margin: 0.5rem;
 }
