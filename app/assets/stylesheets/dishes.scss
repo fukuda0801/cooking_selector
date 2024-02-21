@@ -1,6 +1,6 @@
 /* ランダム料理結果ページ */
 .random_page {
-  background-color: #ffd4d421;
+  background-color: #ffe8d421;
 }
 
 .random_main {
@@ -22,18 +22,18 @@
 
 .random_dish_btn {
   text-decoration: none;
-  background-color: #ff4f50;
+  background-color: #ffad48;
   border-radius: 1rem;
   color: white;
   font-size: 1.2rem;
   padding: 0.3rem 1.5rem;
   margin-right: 2rem;
-  border: solid 2px #ff4f50;
+  border: solid 2px #ffad48;
 }
 
 .random_dish_btn:hover {
   background-color: white;
-  color: #ff4f50;
+  color: #ffad48;
 }
 
 .random_btn_group {
@@ -57,7 +57,7 @@
   margin-left: 2rem;
   margin-top: 1rem;
   background-color: white;
-  border: solid 2px #ff4f50;
+  border: solid 2px #ffad48;
   border-radius: 1rem;
   padding: 1rem 2rem;
   width: 100%;
@@ -93,7 +93,7 @@
 
 /* 材料検索結果ページ */
 .condition_dish_page {
-  background-color: #ffd4d421;
+  background-color: #ffe8d421;
   color: #666;
 }
 
@@ -160,7 +160,7 @@
 
 /* ジャンル検索結果ページ */
 .search_dish_page {
-  background-color: #ffd4d421;
+  background-color: #ffe8d421;
   color: #666;
 }
 
@@ -223,7 +223,7 @@
 }
 
 .show_dish_recipes {
-  border: solid 2px #ff4f50;
+  border: solid 2px #ffad48;
   border-radius: 1rem;
   background-color: white;
   padding: 1rem;
@@ -238,7 +238,7 @@
 }
 
 .show_dish_recipe_url:hover {
-  color: #ff4f50;
+  color: #ffad48;
 }
 
 .show_dish_recipe_intro {
