@@ -1,0 +1,25 @@
+<div class="condition_dish_page">
+  <div class="condition_dish_main">
+    <h4 class="condition_dish_title">〜 今日の食事を材料から決めてみよう！ 〜</h4>
+    <div class="condition_genre_group">
+      <h4 class="condition_dish_genre">選択された材料:</h4>
+      <ul class="condition_dish_list">
+        <% @selected_tag_names.each do |tag_name| %>
+          <li><%= tag_name %></li>
+        <% end %>
+      </ul>
+    </div>
+    <p class="condition_dish_intro">選んだ材料が使用されている料理が表示されます。</p>
+    <%= paginate @dishes %>
+    <div class="condition_dishes">
+      <% @dishes.each do |dish| %>
+        <div class="condition_dish_content">
+          <%= link_to dish_path(dish.id) do %>
+            <%= image_tag(dish.image, class: "condition_dish_img", alt: "料理画像") if dish.image.attached? %>
+            <p class="condition_dish_name"><%= dish.name %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,23 @@
+<div class="random_page">
+  <div class="random_main">
+    <h4 class="random_title">〜 <%= @dish.name %> 〜</h4>
+    <div class="random_content">
+      <%= image_tag(@dish.image) if @dish.image.attached? %>
+      <div class="random_dish_details">
+        <p class="random_dish_detail">ジャンル : <%= @dish.genre %></p>
+        <p class="random_dish_detail">難易度 : <%= @dish.difficulty %></p>
+        <p class="random_dish_detail">調理時間 : <%= @dish.cook_time %>分</p>
+        <p class="random_dish_detail">カロリー : <%= @dish.calorie %>kcal</p>
+        <div class="random_ingredients">
+          <p class="random_ingredient_title">主な材料 :</p>
+          <ul class="random_ingredients_content">
+            <% @dish.tags.each do |tag| %>
+              <li class="random_ingredient"><%= tag.name %></li>
+            <% end %>
+          </ul>
+        </div>
+        <p class="random_dish_detail">説明 : <%= @dish.description %></p>
+      </div>
+    </div>
+  </div>
+</div>

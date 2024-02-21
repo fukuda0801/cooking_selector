@@ -5,7 +5,7 @@ ActiveAdmin.register Dish do
   #
   # Uncomment all parameters which should be permitted for assignment
   #
-  permit_params :name, :description, :cook_time, :calorie, :image, tag_ids: []
+  permit_params :name, :description, :cook_time, :calorie, :difficulty, :genre, :image, tag_ids: []
   #
   # or
   #
@@ -21,6 +21,8 @@ ActiveAdmin.register Dish do
     column :description
     column :cook_time
     column :calorie
+    column :difficulty
+    column :genre
     column "Tags" do |dish|
       dish.tags.map(&:name).join(", ")
     end
@@ -43,6 +45,8 @@ ActiveAdmin.register Dish do
       f.input :description
       f.input :cook_time
       f.input :calorie
+      f.input :difficulty
+      f.input :genre
       f.input :tags, as: :check_boxes
       f.input :image, as: :file
     end
@@ -55,6 +59,8 @@ ActiveAdmin.register Dish do
       row :description
       row :cook_time
       row :calorie
+      row :difficulty
+      row :genre
       row :image do
         if dish.image.attached?
           image_tag url_for(dish.image.variant(resize_to_limit: [200, 200]).processed)

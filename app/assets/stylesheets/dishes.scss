@@ -1,0 +1,208 @@
+/* ランダム料理結果ページ */
+.random_page {
+  background-color: #ffd4d421;
+}
+
+.random_main {
+  padding: 1rem 3rem;
+}
+
+.random_title {
+  font-size: 1.5rem;
+  color: #666;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+}
+
+.random_intro {
+  color: #666;
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+.random_dish_btn {
+  text-decoration: none;
+  background-color: #ff4f50;
+  border-radius: 1rem;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.5rem 2rem;
+}
+
+.random_dish_btn:hover {
+  background-color: white;
+  color: #ff4f50;
+  border: solid 2px #ff4f50;
+}
+
+.random_content {
+  display: flex;
+  align-items: flex-start;
+  margin: 1rem;
+}
+
+.random_content img {
+  width: 100%;
+  max-width: 50%;
+  height: auto;
+  object-fit: contain;
+}
+
+.random_dish_details {
+  margin-left: 2rem;
+  margin-top: 1rem;
+  background-color: white;
+  border: solid 2px #ff4f50;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.random_dish_details .random_dish_detail {
+  color: #666;
+  border-bottom: dashed 1px #666;
+  margin-top: 1rem;
+}
+
+.random_ingredient_title {
+  color: #666;
+  margin-bottom: 0;
+}
+
+.random_ingredients {
+  display: flex;
+  border-bottom: dashed 1px #666;
+}
+
+.random_ingredients_content {
+  display: flex;
+  margin-bottom: 0;
+}
+
+.random_ingredient {
+  margin-right: 2rem;
+  margin-bottom: 0;
+  color: #666;
+}
+
+/* 材料検索結果ページ */
+.condition_dish_page {
+  background-color: #ffd4d421;
+  color: #666;
+}
+
+.condition_dish_main {
+  padding: 4rem;
+}
+
+.condition_dish_title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+}
+
+.conditon_dish_intro {
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+.condition_dish_genre {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.condition_genre_group {
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.condition_dish_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.condition_dish_list li {
+  margin-right: 2rem;
+}
+
+.condition_dishes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3rem 3rem;
+  background-color: white;
+  padding: 1rem;
+}
+
+.condition_dish_content a {
+  text-decoration: none;
+  color: #666;
+}
+
+.condition_dish_name {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+}
+
+.condition_dish_img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: solid 2px #666;
+  border-radius: 5px;
+}
+
+/* ジャンル検索結果ページ */
+.search_dish_page {
+  background-color: #ffd4d421;
+  color: #666;
+}
+
+.search_dish_main {
+  padding: 4rem;
+}
+
+.search_dish_title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+}
+
+.search_dish_intro {
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+.search_dish_genre {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.search_dishes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3rem 3rem;
+  background-color: white;
+  padding: 1rem;
+}
+
+.search_dish_content a {
+  text-decoration: none;
+  color: #666;
+}
+
+.search_dish_name {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  
+}
+
+.search_dish_img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: solid 2px #666;
+  border-radius: 5px;
+}
