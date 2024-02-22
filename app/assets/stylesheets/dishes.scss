@@ -64,7 +64,7 @@
   font-size: 1.2rem;
 }
 
-.random_dish_details .random_dish_detail {
+.random_dish_detail {
   color: #666;
   border-bottom: dashed 1px #666;
   margin-top: 1rem;
@@ -246,6 +246,7 @@
   margin: 0.5rem;
 }
 
+/* ページネーション関係 */
 .pagination a {
   color: #666;
   margin: 0 0.5rem;
