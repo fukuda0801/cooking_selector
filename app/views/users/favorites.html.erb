@@ -1,0 +1,16 @@
+<div class="favorite_dish_page">
+  <div class="favorite_dish_main">
+    <h4 class="favorite_dish_title">あなたの選んだお気に入り料理</h4>
+    <p class="favorite_info">12件までお気に入り登録できます。</p>
+    <div class="favorite_dishes">
+      <% @favorite_dishes.each do |dish| %>
+        <div class="favorite_dish_content">
+          <%= link_to dish_path(dish.id) do %>
+            <%= image_tag(dish.image, class: "favorite_dish_img", alt: "料理画像") if dish.image.attached? %>
+            <p class="favorite_dish_name"><%= dish.name %></p>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

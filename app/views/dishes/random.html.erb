@@ -5,6 +5,15 @@
     <div class="random_btn_group">
       <%= link_to "もう一度選ぶ！", random_dishes_path, class: "random_dish_btn" %>
       <%= link_to "トップページに戻る", root_path, class: "random_dish_btn" %>
+      <% if user_signed_in? %>
+        <% if current_user.dishes.include?(@dish) %>
+          <%= link_to 'お気に入りから削除', user_dish_path(@dish), method: :delete, class: "random_dish_btn" %>
+        <% else %>
+          <%= link_to 'お気に入りに追加', user_dishes_path(dish_id: @dish.id), method: :post, class: "random_dish_btn" %>
+        <% end %>
+      <% else %>
+        <%= button_to 'お気に入りに追加', "#", disabled: true, class: "btn disabled-btn", form: {style: "display:none;"} %>
+      <% end %>
     </div>
     <div class="random_content">
       <%= image_tag(@dish.image) if @dish.image.attached? %>

@@ -9,7 +9,7 @@
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <%= link_to "アカウント情報", user_path(current_user.id), class: "dropdown-item dropdown_item_link" %>
-            <%= link_to "設定", user_path(current_user.id), class: "dropdown-item dropdown_item_link" %>
+            <%= link_to "お気に入り料理", favorites_user_path(current_user.id), class: "dropdown-item dropdown_item_link" %>
             <%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item dropdown_item_link" %>
             <% if current_user.name == "ゲストユーザー" %>
               <a href="" class="dropdown-item dropdown_item_link dropdown_item_disabled" tabindex="-1" aria-disabled="true">退会する</a>

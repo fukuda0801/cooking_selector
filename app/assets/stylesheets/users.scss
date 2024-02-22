@@ -87,3 +87,44 @@
 .field_with_errors {
   display: contents;
 }
+
+/* お気に入り料理ページ */
+.favorite_dish_page {
+  background-color: #ffe8d421;
+  color: #666;
+}
+
+.favorite_dish_main {
+  padding: 2rem;
+}
+
+.favorite_dish_title {
+  font-size: 1.5rem;
+}
+
+.favorite_dishes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 2rem 2rem;
+  background-color: white;
+  padding: 1rem;
+}
+
+.favorite_dish_img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: solid 2px #666;
+  border-radius: 5px;
+}
+
+.favorite_dish_content a {
+  text-decoration: none;
+}
+
+.favorite_dish_name {
+  color: #666;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+}
