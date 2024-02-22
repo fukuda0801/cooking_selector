@@ -245,3 +245,19 @@
   font-size: 1rem;
   margin: 0.5rem;
 }
+
+.pagination a {
+  color: #666;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+.pagination .page.current {
+  color: #ffad48;
+  margin: 0 0.5rem;
+}
+
+.pagination .page.gap {
+  color: #666;
+  margin: 0 0.5rem;
+}
