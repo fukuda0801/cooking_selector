@@ -1,7 +1,7 @@
 class Dish < ApplicationRecord
   has_many :dish_tags, dependent: :destroy
   has_many :tags, through: :dish_tags
-  has_many :user_dishes
+  has_many :user_dishes, dependent: :destroy
   has_many :users, through: :user_dishes
   has_one_attached :image
 

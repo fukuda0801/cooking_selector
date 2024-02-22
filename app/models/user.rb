@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :user_dishes
+  has_many :user_dishes, dependent: :destroy
   has_many :dishes, through: :user_dishes
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
