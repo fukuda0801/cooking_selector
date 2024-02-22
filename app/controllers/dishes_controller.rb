@@ -1,14 +1,14 @@
 class DishesController < ApplicationController
+  before_action :set_rakuten_service, only: [:show, :random]
+  
   def show
     @dish = Dish.find(params[:id])
-    rakuten_service = RakutenRecipeService.new('1073376705435074167')
-    @recipes = rakuten_service.fetch_recipes(@dish.category_full_id)
+    @recipes = @rakuten_service.fetch_recipes(@dish.category_full_id)
   end
 
   def random
     @dish = Dish.includes(:tags).random
-    rakuten_service = RakutenRecipeService.new('1073376705435074167')
-    @recipes = rakuten_service.fetch_recipes(@dish.category_full_id)
+    @recipes = @rakuten_service.fetch_recipes(@dish.category_full_id)
   end
 
   def search
@@ -20,5 +20,12 @@ class DishesController < ApplicationController
   def condition
     @selected_tag_names = params.dig(:search, :tags).values.reject(&:blank?)
     @dishes = Dish.search_by_tag_names(@selected_tag_names).page(params[:page])
+  end
+
+  private
+
+  def set_rakuten_service
+    app_id = ENV['RAKUTEN_APP_ID']
+    @rakuten_service = RakutenRecipeService.new(app_id)
   end
 end
