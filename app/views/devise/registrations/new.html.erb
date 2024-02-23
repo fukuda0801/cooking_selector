@@ -4,35 +4,35 @@
     <div class="user_form_main">
       <%= form_with model:@user, url: user_registration_path do |f| %>
         <%= render "devise/shared/error_messages", resource: resource %>
-        <div class="row mb-3">
+        <div class="row mb-3 justify-content-center">
           <%= f.label :name, "アカウント名", class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
             <%= f.text_field :name, autocomplete: "name:", class: "form-control", autofocus: true, placeholder: "アカウント名を入力" %>
           </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 justify-content-center">
           <%= f.label :email, "メールアドレス", class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
             <%= f.email_field :email, autocomplete: "email", class: "form-control", placeholder: "gohan@example.com" %>
           </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 justify-content-center">
           <%= f.label :password, "パスワード", class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
             <%= f.password_field :password, autocomplete: "new-password", class: "form-control", placeholder: "パスワードを半角英数字６文字以上で入力" %>
           </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 justify-content-center">
           <%= f.label :password_confirmation, "パスワード確認", class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
             <%= f.password_field :password_confirmation, autocomplete: "new-password", class: "form-control", placeholder: "パスワードを再度入力" %>
           </div>
         </div>
 
-        <div class="row mb-3">
+        <div class="row mb-3 justify-content-center">
           <%= f.label :sex, "性別", class: "col-sm-2 col-form-label" %>
           <div class="col-sm-10">
             <%= f.radio_button :sex, '男性', class: "form-check-input" %>

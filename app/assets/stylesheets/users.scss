@@ -5,12 +5,13 @@
 }
 
 .user_form {
-  padding: 3rem;
+  padding: 2rem 4rem;
   border: 2px solid #ffc7af;
   border-radius: 10px;
   box-shadow: 2px 2px 2px 2px #ffc7af;
   background-image: image-url('form_back.jpg');
   font-family: sans-serif;
+  font-size: 0.9rem;
   color: #666666;
 }
 
@@ -24,7 +25,7 @@
 .user_form_btn {
   font-size: 1.3rem;
   padding: 0.3rem 1rem;
-  margin: auto;
+  margin: 1rem auto;
   display: block;
   background-color: white;
   color: #666;
@@ -127,4 +128,39 @@
   color: #666;
   padding-left: 1rem;
   font-size: 1.2rem;
+}
+
+/* レスポンシブ対応(スマホ、タブレット向け) */
+@media (max-width: 500px) {
+  .user_form_page {
+    padding: 5rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 960px) {
+  .user_form_page {
+    padding: 5rem 1rem;
+  }
+
+  .user_form .col-sm-2,
+  .user_form .col-sm-10 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .user_form .col-form-label,
+  .user_form .form-control {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (min-width: 961px) and (max-width: 1090px) {
+  .user_form .col-sm-2 {
+    flex: 0 0 30%;
+    max-width: 30%;
+  }
+  .user_form .col-sm-10 {
+    flex: 0 0 70%;
+    max-width: 70%;
+  }
 }
