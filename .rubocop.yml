@@ -91,3 +91,6 @@ Rails/LexicallyScopedActionFilter:
 
 Lint/RedundantDirGlobSort:
   Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false

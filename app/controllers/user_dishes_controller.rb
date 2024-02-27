@@ -9,8 +9,10 @@ class UserDishesController < ApplicationController
 
   def destroy
     @user_dish = current_user.user_dishes.find_by(dish_id: params[:id])
-    @dish = @user_dish.dish
-    @user_dish.destroy if @user_dish
-    redirect_to dish_path(@dish.id), notice: 'お気に入りから削除しました'
+    if @user_dish&.destroy
+      redirect_to dish_path(@user_dish.dish_id), notice: 'お気に入りから削除しました'
+    else
+      redirect_to dishes_path, alert: '削除に失敗しました'
+    end
   end
 end

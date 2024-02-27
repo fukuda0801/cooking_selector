@@ -14,9 +14,9 @@ RSpec.describe Dish, type: :model do
       end
 
       it "nameがすでに存在している場合" do
-        already_dish = create(:dish, name: "オムライス")
-        already_dish2 = build(:dish, name: "オムライス")
-        expect(already_dish2).not_to be_valid
+        create(:dish, name: "オムライス")
+        duplicate_dish = build(:dish, name: "オムライス")
+        expect(duplicate_dish).not_to be_valid
       end
 
       it "descriptionが未入力の場合無効" do
@@ -58,7 +58,7 @@ RSpec.describe Dish, type: :model do
       let!(:tag2) { create(:tag, name: "米") }
       let!(:dish_with_tag1) { create(:dish) }
       let!(:dish_with_tag2) { create(:dish) }
-      
+
       before do
         create(:dish_tag, dish: dish_with_tag1, tag: tag1)
         create(:dish_tag, dish: dish_with_tag2, tag: tag2)

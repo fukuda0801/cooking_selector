@@ -1,5 +1,4 @@
 ActiveAdmin.register Dish do
-
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -28,9 +27,7 @@ ActiveAdmin.register Dish do
       dish.tags.map(&:name).join(", ")
     end
     column :image do |dish|
-      if dish.image.attached?
-        image_tag(dish.image.variant(resize_to_fill: [100, 100]).processed)
-      end
+      image_tag(dish.image.variant(resize_to_fill: [100, 100]).processed) if dish.image.attached?
     end
     actions
   end
@@ -65,10 +62,8 @@ ActiveAdmin.register Dish do
       row :genre
       row :category_full_id
       row :image do
-        if dish.image.attached?
-          image_tag url_for(dish.image.variant(resize_to_limit: [200, 200]).processed)
-        end
-      end 
+        image_tag url_for(dish.image.variant(resize_to_limit: [200, 200]).processed) if dish.image.attached?
+      end
       row :tags do |dish|
         dish.tags.map(&:name).join(", ")
       end
