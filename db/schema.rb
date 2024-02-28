@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_21_132228) do
+ActiveRecord::Schema.define(version: 2024_02_28_083343) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -85,6 +85,7 @@ ActiveRecord::Schema.define(version: 2024_02_21_132228) do
     t.string "difficulty"
     t.string "genre"
     t.string "category_full_id"
+    t.index ["name"], name: "index_dishes_on_name", unique: true
   end
 
   create_table "tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -92,6 +93,7 @@ ActiveRecord::Schema.define(version: 2024_02_21_132228) do
     t.string "category"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["name"], name: "index_tags_on_name", unique: true
   end
 
   create_table "user_dishes", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

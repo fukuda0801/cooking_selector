@@ -13,5 +13,12 @@ FactoryBot.define do
         create(:dish_tag, dish: dish, tag: carrot_tag)
       end
     end
+
+    trait :with_image do
+      after(:create) do |dish|
+        file_path = Rails.root.join("spec/fixtures/files/test.jpg")
+        dish.image.attach(io: File.open(file_path), filename: 'test.jpg', content_type: 'image/jpg')
+      end
+    end
   end
 end

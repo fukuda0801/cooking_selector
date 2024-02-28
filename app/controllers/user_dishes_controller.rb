@@ -3,8 +3,12 @@ class UserDishesController < ApplicationController
 
   def create
     @dish = Dish.find(params[:dish_id])
-    current_user.dishes << @dish unless current_user.dishes.include?(@dish)
-    redirect_to dish_path(@dish.id), notice: 'お気に入りに追加しました'
+    if current_user.dishes.count < 12
+      current_user.dishes << @dish unless current_user.dishes.include?(@dish)
+      redirect_to dish_path(@dish.id), notice: 'お気に入りに追加しました'
+    else
+      redirect_to dish_path(@dish.id), alert: 'お気に入りは最大12件までです'
+    end
   end
 
   def destroy

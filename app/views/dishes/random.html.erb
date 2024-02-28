@@ -11,8 +11,6 @@
         <% else %>
           <%= link_to 'お気に入りに追加', user_dishes_path(dish_id: @dish.id), method: :post, class: "random_dish_btn" %>
         <% end %>
-      <% else %>
-        <%= button_to 'お気に入りに追加', "#", disabled: true, class: "btn disabled-btn", form: {style: "display:none;"} %>
       <% end %>
     </div>
     <div class="random_content">

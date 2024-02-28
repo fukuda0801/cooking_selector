@@ -24,6 +24,11 @@ RSpec.describe Dish, type: :model do
         expect(nothing_description_dish).not_to be_valid
       end
 
+      it "descriptionが25文字を超えると無効" do
+        over_description_dish = build(:dish, description: "a" * 26)
+        expect(over_description_dish).not_to be_valid
+      end
+
       it "cook_timeが未入力の場合" do
         nothing_cooktime_dish = build(:dish, cook_time: "")
         expect(nothing_cooktime_dish).not_to be_valid

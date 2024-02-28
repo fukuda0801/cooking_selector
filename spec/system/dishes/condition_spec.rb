@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Condition", type: :system do
+RSpec.describe "condition", type: :system do
   let!(:tag1) { create(:tag, name: "卵", category: "卵") }
   let!(:tag2) { create(:tag, name: "とり肉", category: "肉") }
   let!(:dish1) { create(:dish, name: "オムライス") }
@@ -23,7 +23,7 @@ RSpec.describe "Condition", type: :system do
       expect(page).to have_content dish1.name
       expect(page).to have_content dish3.name
       expect(page).not_to have_content dish2.name
- 
+
       click_on dish1.name
       expect(current_path).to eq dish_path(dish1.id)
     end

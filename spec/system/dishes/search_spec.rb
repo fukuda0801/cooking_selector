@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "Search", type: :system do
+RSpec.describe "search", type: :system do
   let!(:ja_dish1) { create(:dish, genre: "和食") }
   let!(:ja_dish2) { create(:dish, genre: "和食") }
   let!(:ch_dish) { create(:dish, genre: "中華") }
