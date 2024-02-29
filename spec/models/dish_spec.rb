@@ -48,6 +48,14 @@ RSpec.describe Dish, type: :model do
         nothing_genre_dish = build(:dish, genre: "")
         expect(nothing_genre_dish).not_to be_valid
       end
+
+      it "tagと関連のあるdishを削除してもtagは削除されないこと" do
+        related_dish = create(:dish)
+        related_tag = create(:tag)
+        create(:dish_tag, dish: related_dish, tag: related_tag)
+        related_dish.destroy
+        expect(Tag.exists?(related_tag.id)).to be true
+      end
     end
 
     context "self.randomメソッド" do

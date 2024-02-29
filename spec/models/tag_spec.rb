@@ -21,4 +21,12 @@ RSpec.describe Tag, type: :model do
     nothing_category = build(:tag, category: "")
     expect(nothing_category).not_to be_valid
   end
+
+  it "dishと関連のあるtagを削除してもdishは削除されないこと" do
+    related_dish = create(:dish)
+    related_tag = create(:tag)
+    create(:dish_tag, dish: related_dish, tag: related_tag)
+    related_tag.destroy
+    expect(Dish.exists?(related_dish.id)).to be true
+  end
 end
