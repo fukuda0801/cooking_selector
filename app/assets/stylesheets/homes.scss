@@ -244,7 +244,7 @@
   .home_random_title, .home_condition_title, .home_search_title {
     font-size: 1.2rem;
     margin: 1rem;
-    overflow: visible; /* テキストのはみ出しを許可 */
+    overflow: visible;
     text-overflow: clip;
   }
 
