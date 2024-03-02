@@ -12,6 +12,16 @@ jobs:
       - setup_remote_docker:
           version: 20.10.14
       - run:
+          name: Create an empty .env file
+          command: touch .env
+      - run:
+          name: Install Dockerize
+          command: |
+            if [ ! -f /usr/local/bin/dockerize ]; then
+              wget https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-linux-amd64-v0.6.1.tar.gz
+              sudo tar -xzvf dockerize-linux-amd64-v0.6.1.tar.gz -C /usr/local/bin
+            fi
+      - run:
           name: Build and start containers
           command: |
             docker-compose up -d
