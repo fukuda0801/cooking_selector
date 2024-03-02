@@ -10,7 +10,7 @@ jobs:
       - image: mysql:8.0
         environment:
           MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: myapp_test
+          MYSQL_DATABASE: cooking_selector_test
       - image: selenium/standalone-chrome:latest
     environment:
       RAILS_ENV: test
