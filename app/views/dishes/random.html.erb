@@ -16,7 +16,7 @@
       <% end %>
     </div>
     <div class="random_content">
-      <%= image_tag(@dish.image) if @dish.image.attached? %>
+      <%= image_tag(@dish.image, alt: "料理画像") if @dish.image.attached? %>
       <div class="random_dish_details">
         <p class="random_dish_detail">料理名 : <%= @dish.name %></p>
         <p class="random_dish_detail">ジャンル : <%= @dish.genre %></p>

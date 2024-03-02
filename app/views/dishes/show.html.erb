@@ -14,7 +14,7 @@
     </div>
     <h4 class="random_title">〜 <%= @dish.name %> 〜</h4>
     <div class="random_content">
-      <%= image_tag(@dish.image) if @dish.image.attached? %>
+      <%= image_tag(@dish.image, alt: "料理画像") if @dish.image.attached? %>
       <div class="random_dish_details">
         <p class="random_dish_detail">ジャンル : <%= @dish.genre %></p>
         <p class="random_dish_detail">難易度 : <%= @dish.difficulty %></p>
