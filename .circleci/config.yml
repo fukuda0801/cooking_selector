@@ -4,69 +4,53 @@ orbs:
   heroku: circleci/heroku@2.0
 
 jobs:
-  build:
+  build_and_test:
     docker:
       - image: cimg/ruby:3.0.2
-      - image: mysql:8.0
-        environment:
-          MYSQL_ROOT_PASSWORD: password
-          MYSQL_DATABASE: cooking_selector_test
-      - image: selenium/standalone-chrome:latest
-    environment:
-      RAILS_ENV: test
-      MYSQL_HOST: mysql
-      DATABASE_URL: "mysql2://root:password@mysql/myapp_test"
     steps:
       - checkout
+      - setup_remote_docker:
+          version: 20.10.14
       - run:
-          name: Install dependencies
+          name: Install Dockerize
           command: |
-            sudo apt-get update && sudo apt-get install -y libmysqlclient-dev
-            gem install bundler
-            bundle install --jobs=4 --retry=3 --path vendor/bundle
+            wget https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-linux-amd64-v0.6.1.tar.gz
+            tar -xzvf dockerize-linux-amd64-v0.6.1.tar.gz -C /usr/local/bin
       - run:
-          name: Wait for DB
+          name: Build and start containers
           command: |
-            dockerize -wait tcp://mysql:3306 -timeout 2m
+            docker-compose up -d
+            dockerize -wait tcp://localhost:3306 -timeout 1m
       - run:
-          name: Setup Database
+          name: Setup database
           command: |
-            bundle exec rails db:create
-            bundle exec rails db:schema:load
+            docker-compose exec web rails db:setup
       - run:
-          name: Run RuboCop
-          command: bundle exec rubocop
-      - run:
-          name: Run RSpec Tests
-          command: bundle exec rspec
-      - run:
-          name: Precompile assets
+          name: Run tests
           command: |
-            bundle exec rake assets:precompile
+            docker-compose exec web rspec
+            docker-compose exec web rubocop
 
   heroku_deploy:
-    working_directory: ~/potepanec
-    executor: heroku/default
-    resource_class: small
+    docker:
+      - image: cimg/ruby:3.0.2
     steps:
       - checkout
       - heroku/install
       - run:
-          name: Deploy
-          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git HEAD:main
-      - run:
-          name: Run post-deploy tasks
+          name: Deploy to Heroku
           command: |
-            heroku run bin/rails db:migrate -a $HEROKU_APP_NAME
+            heroku git:remote -a $HEROKU_APP_NAME
+            git push heroku main:master
 
 workflows:
-  version: 2
+  version: 2.1
   build_deploy:
     jobs:
-      - build
+      - build_and_test
       - heroku_deploy:
           requires:
-            - build
+            - build_and_test
           filters:
             branches:
               only: main
