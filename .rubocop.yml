@@ -91,3 +91,10 @@ Rails/LexicallyScopedActionFilter:
 
 Lint/RedundantDirGlobSort:
   Enabled: false
+
+Rails/HasManyOrHasOneDependent:
+  Enabled: false
+
+Layout/FirstHashElementIndentation:
+  Exclude:
+    - 'spec/system/dishes/random_spec.rb'

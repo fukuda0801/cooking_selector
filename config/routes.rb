@@ -2,10 +2,21 @@ Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   root to: 'homes#index'
-  get 'users/show'
   devise_for :users
   devise_scope :user do
     post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
   end
-  resources :users, except: [:new, :create]
+  resources :users, only: [:show, :destroy] do
+    member do
+      get :favorites
+    end
+  end
+  resources :user_dishes, only: [:create, :destroy]
+  resources :dishes do
+    collection do
+      get 'search'
+      get 'random'
+      get 'condition'
+    end
+  end
 end

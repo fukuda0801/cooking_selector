@@ -1,68 +1,73 @@
 /*ヘッダー部分*/
 .header_main {
-  border-bottom: 4px double #666;
   margin-bottom: 0;
   padding-bottom: 0;
   position: sticky;
   top: 0;
   background-color: white;
+  height: 100px;
+  z-index: 100;
 }
 
-.header_main .home_title {
-  font-size: 3rem;
-  font-weight: 400;
-  color: #666;
-  text-decoration: none;
+.header_content {
+  display: flex;
+  justify-content: space-between;
 }
 
-.header_main .nav_title {
-  text-decoration: none;
-  color: #666;
-  font-size: 1.2 rem;
+.header_btn_group {
+  display: flex;
+  margin: 2rem;
 }
 
-.header_main .login_btn {
+.home_logo_img {
+  height: 100px;
+  width: auto;
+  padding-left: 1rem;
+}
+
+.login_btn {
   font-size: 1rem;
   color: white;
   text-align: center;
   text-decoration: none;
-  display: inline-block;
-  background-color: #ff4f50;
-  border: 2px solid #ff4f50;
+  background-color: #ffad48;
+  border-radius: 1rem;
+  border: 2px solid #ffad48;
   padding: 0.3rem 1rem;
-  margin-right: 0.6rem;
+  margin: 0.2rem 0.6rem;
+  white-space: nowrap;
 }
 
-.header_main .login_btn:hover {
+.login_btn:hover {
   background-color: white;
-  color: #ff4f50;
-  border: 2px solid #ff4f50;
+  color: #ffad48;
+  border: 2px solid #ffad48;
 }
 
 .header_main .dropdown_login_btn {
-  background-color: #ff4f50;
+  background-color: #ffad48;
   color: white;
   padding: 0.3rem 1rem;
   margin-right: 0.6rem;
-  border: 2px solid #ff4f50;
+  border: 2px solid #ffad48;
 }
 
 .header_main .dropdown_login_btn:focus {
   background-color: white;
-  color: #ff4f50;
-  border: 2px solid #ff4f50;
+  color: #ffad48;
+  border: 2px solid #ffad48;
 }
 
 .header_main .dropdown_login_btn:hover {
   background-color: white;
-  color: #ff4f50;
-  border: 2px solid #ff4f50;
+  color: #ffad48;
+  border: 2px solid #ffad48;
 }
 
 .header_main .dropdown_login_btn:active {
   background-color: white;
-  color: #ff4f50;
-  border: 2px solid #ff4f50;
+  color: #ffad48;
+  border: 2px solid #ffad48;
 }
 
 .header_main .dropdown_item_link {
@@ -73,4 +78,65 @@
 .header_main .dropdown_item_disabled {
   pointer-events: none;
   color: #ccc;
+}
+
+/* レスポンシブ対応 */
+@media (max-width: 600px) {
+  .header_content {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .home_logo_img {
+    height: 70px;
+    width: auto;
+    padding-left: 0;
+  }
+
+  .header_btn_group {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  .login_btn, .header_main .dropdown_login_btn {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    margin: 2px 0;
+  }
+}
+
+@media (min-width: 601px) and (max-width: 725px) {
+  .header_content {
+    padding: 10px;
+  }  
+
+  .header_btn_group {
+    display: flex;
+    margin: 2rem 0.2rem;
+  }
+
+  .home_logo_img {
+    height: 80px;
+    width: auto;
+    padding-left: 0;
+  }
+
+  .login_btn {
+    font-size: 0.9rem;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    background-color: #ffad48;
+    border-radius: 1rem;
+    border: 2px solid #ffad48;
+    padding: 0.2rem 0.8rem;
+    margin: 0.2rem 0.5rem;
+    white-space: nowrap;
+  }
 }

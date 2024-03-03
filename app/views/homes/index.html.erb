@@ -1,6 +1,57 @@
-<div class = "home_main">
-  <div class="home_random_search">
+<% content_for :title, "ホーム" %>
+
+<div class="home_main">
+  <div class="home_random">
+    <div class="home_random_content">
+      <h4 class="home_random_title">〜 今日の食事を決められない、<br class="mobile_br">そこのあなた！ 〜</h4>
+      <p class="home_random_text">毎日の食事を決めるのって、難しいですよね。<br>
+      ついつい<span class="home_under">同じものばかり</span>食べてしまうこともしばしば。<br>
+      そんな時は下のボタンを押して<br>
+      今日の食事を<span class="home_under">ランダム</span>で決めてみましょう！</p>
+      <%= link_to "Search Dish", random_dishes_path, class: "home_random_btn" %>
+    </div>
+    <%= image_tag 'random_search.jpeg', class: "home_section_image" %>
   </div>
-  <div class="home_conditional_search">
+
+  <div class="home_condition">
+    <div class="home_condition_content">
+      <h4 class="home_condition_title">〜 今ある食材で食事を決めたい、<br class="mobile_br">そこのあなた！ 〜</h4>
+      <p class="home_condition_text">食事を決めると言っても<br>
+      買い物にいつでも行けるわけではありません。<br>
+      そんな時は<span class="home_under">家にある材料</span>から<br>
+      今日の食事を決めてみましょう！</p>
+      <%= form_with url: condition_dishes_path, method: :get, local: true do |f| %>
+        <% Tag.select(:category).distinct.each do |tag_category| %>
+          <div class="home_condition_group">
+            <%= label_tag "search[tags][#{tag_category.category}]", tag_category.category, class: "home_condition_tag" %>
+            <%= select_tag "search[tags][#{tag_category.category}]",
+                          options_from_collection_for_select(Tag.where(category: tag_category.category),
+                          :name, :name, selected: params.dig(:search, :tags, tag_category.category)),
+                          include_blank: true, class: "home_condition_form" %>
+          </div>
+        <% end %>
+        <%= f.submit "Search Dish", class: "home_condition_btn" %>
+      <% end %>
+    </div>
+    <%= image_tag 'conditional_search.jpg', class: "home_section_image" %>
+  </div>
+
+  <div class="home_search">
+    <div class="home_search_content">
+      <h4 class="home_search_title">〜 料理のジャンルから食事を決めたい、<br class="mobile_br">そこのあなた！ 〜</h4>
+      <p class="home_search_text">その日の気分でどうしても食べたいジャンルの<br>
+      料理がある時、我慢したくないですよね。<br>
+      そんな時は<span class="home_under">料理の種類</span>から<br>
+      今日の食事を決めましょう！</p>
+      <%= search_form_for @q, url: search_dishes_path, method: :get do |f| %>
+        <%= f.select :genre_eq,
+        options_for_select(Dish.select(:genre).distinct.pluck(:genre)),
+        { include_blank: '種類を選択してください。'},
+        { class: "home_search_form" } %>
+        
+        <%= f.submit "Search Dish", class: "home_search_btn" %>
+      <% end %>
+    </div>
+    <%= image_tag 'search.jpg', class: "home_section_image" %>
   </div>
 </div>

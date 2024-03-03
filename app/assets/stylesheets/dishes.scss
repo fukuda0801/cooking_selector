@@ -1,0 +1,445 @@
+/* ランダム料理結果ページ */
+.random_page {
+  background-color: #ffe8d421;
+}
+
+.random_main {
+  padding: 1rem 3rem;
+}
+
+.random_title {
+  font-size: 1.5rem;
+  color: #666;
+  margin: 1rem;
+  text-decoration: underline;
+}
+
+.random_intro {
+  color: #666;
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+.random_dish_btn {
+  text-decoration: none;
+  background-color: #ffad48;
+  border-radius: 1rem;
+  color: white;
+  font-size: 1.2rem;
+  padding: 0.3rem 1.5rem;
+  margin-right: 2rem;
+  border: solid 2px #ffad48;
+}
+
+.random_dish_btn:hover {
+  background-color: white;
+  color: #ffad48;
+}
+
+.random_btn_group {
+  display: flex;
+}
+
+.random_content {
+  display: flex;
+  align-items: flex-start;
+  margin: 1rem;
+}
+
+.random_content img {
+  width: 100%;
+  max-width: 50%;
+  height: auto;
+  object-fit: contain;
+}
+
+.random_dish_details {
+  margin-left: 2rem;
+  background-color: white;
+  border: solid 2px #ffad48;
+  border-radius: 1rem;
+  padding: 1rem 2rem;
+  width: 100%;
+  font-size: 1.2rem;
+}
+
+.random_dish_detail {
+  color: #666;
+  border-bottom: dashed 1px #666;
+  margin-top: 1rem;
+}
+
+.random_ingredient_title {
+  color: #666;
+  margin-bottom: 0;
+}
+
+.random_ingredients {
+  display: flex;
+  border-bottom: dashed 1px #666;
+}
+
+.random_ingredients_content {
+  display: flex;
+  margin-bottom: 0;
+}
+
+.random_ingredient {
+  margin-right: 2rem;
+  margin-bottom: 0;
+  color: #666;
+}
+
+/* 材料検索結果ページ */
+.condition_dish_page {
+  background-color: #ffe8d421;
+  color: #666;
+}
+
+.condition_dish_main {
+  padding: 4rem;
+}
+
+.condition_dish_title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+}
+
+.condition_dish_intro {
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+.condition_dish_genre {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.condition_genre_group {
+  display: flex;
+  font-size: 1.2rem;
+}
+
+.condition_dish_list {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.condition_dish_list li {
+  margin-right: 2rem;
+}
+
+.condition_dishes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3rem 3rem;
+  background-color: white;
+  padding: 1rem;
+}
+
+.condition_dish_content a {
+  text-decoration: none;
+  color: #666;
+}
+
+.condition_dish_name {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+}
+
+.condition_dish_img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: solid 2px #666;
+  border-radius: 5px;
+}
+
+/* ジャンル検索結果ページ */
+.search_dish_page {
+  background-color: #ffe8d421;
+  color: #666;
+}
+
+.search_dish_main {
+  padding: 4rem;
+}
+
+.search_dish_title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+}
+
+.search_dish_intro {
+  margin: 1rem;
+  font-size: 1rem;
+}
+
+.search_dish_genre {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.search_dishes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 3rem 3rem;
+  background-color: white;
+  padding: 1rem;
+}
+
+.search_dish_content a {
+  text-decoration: none;
+  color: #666;
+}
+
+.search_dish_name {
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  
+}
+
+.search_dish_img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: solid 2px #666;
+  border-radius: 5px;
+}
+
+/* 料理詳細ページ */
+.show_btn_group {
+  display: flex;
+}
+
+.show_dish_recipe {
+  padding: 1rem 3rem;
+  color: #666;
+}
+
+.show_dish_recipe_title {
+  font-size: 1.2rem;
+}
+
+.show_dish_recipes {
+  border: solid 2px #ffad48;
+  border-radius: 1rem;
+  background-color: white;
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.show_dish_recipe_url {
+  text-decoration: none;
+  color: #666;
+  font-size: 1.2rem;
+  background: linear-gradient(transparent 80%, #ff5656a1 70%);
+}
+
+.show_dish_recipe_url:hover {
+  color: #ffad48;
+}
+
+.show_dish_recipe_intro {
+  font-size: 1rem;
+  margin: 0.5rem;
+}
+
+/* ページネーション関係 */
+.pagination a {
+  color: #666;
+  margin: 0 0.5rem;
+  text-decoration: none;
+}
+
+.pagination .page.current {
+  color: #ffad48;
+  margin: 0 0.5rem;
+}
+
+.pagination .page.gap {
+  color: #666;
+  margin: 0 0.5rem;
+}
+
+/* レスポンシブ対応(スマホ向け) */
+/* ランダム料理結果ページ、料理詳細ページ */
+@media (max-width: 500px) {
+  .random_main {
+    padding: 1rem 0.3rem;
+  }
+
+  .random_title {
+    font-size: 1.2rem;
+  }
+
+  .show_btn_group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .random_btn_group {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .random_dish_btn {
+    border-radius: 0.8rem;
+    font-size: 0.8rem;
+    padding: 0.3rem 1rem;
+    margin: 0.7rem 6rem;
+    text-align: center;
+  }
+
+  .random_content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .random_content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .random_dish_details {
+    margin-left: 0;
+    padding: 0.5rem 0.7rem;
+    width: 100%;
+    font-size: 0.8rem;
+  }
+  
+  .random_dish_detail {
+    margin-top: 0.8rem;
+  }
+
+  .show_dish_recipe {
+    padding: 1rem 0.3rem;
+  }
+
+  .show_dish_recipe_title, .show_dish_recipe_intro {
+    margin: 1rem;
+  }
+
+  .show_dish_recipes {
+    padding: 0.5rem;
+  }
+  
+  .show_dish_recipe_url {
+    font-size: 1rem;
+  }
+
+  .show_dish_recipe_intro {
+    font-size: 0.8rem;
+    margin: 0.5rem;
+  }
+
+  /* ジャンル検索ページ */
+  .search_dish_main {
+    padding: 2rem 0.5rem;
+  }
+
+  .search_dish_title {
+    font-size: 1.2rem;
+  }
+  
+  .search_dish_genre {
+    font-size: 1rem;
+  }
+
+  .search_dish_intro {
+    font-size: 0.8rem;
+  }
+
+  .search_dishes {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .search_dish_name {
+    font-size: 1rem;
+  }
+
+  /* 材料検索ページ */
+  .condition_dish_main {
+    padding: 2rem 0.5rem;
+  }
+
+  .condition_dish_title {
+    font-size: 1.2rem;
+  }
+
+  .condition_genre_group {
+    display: flex;
+    flex-direction: column;
+    font-size: 1rem;
+  }
+
+  .condition_dishes {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .condition_dish_name {
+    font-size: 1rem;
+  }
+}
+
+/* レスポンシブ対応(タブレット向け) */
+/* ジャンル検索ページ */
+@media (min-width: 501px) and (max-width: 960px) {
+  .search_dish_main {
+    padding: 1rem;
+  }
+
+  .search_dishes {
+    gap: 1.5rem 1.5rem;
+  }
+
+  .search_dish_name {
+    font-size: 1rem;
+  }
+
+  /* 材料検索ページ */
+  .condition_dish_main {
+    padding: 1rem;
+  }
+
+  .condition_dishes {
+    gap: 1.5rem 1.5rem;
+  }
+
+  .condition_dish_name {
+    font-size: 1rem;
+  }
+
+  /* 料理詳細ページ */
+  .random_content {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .random_dish_details {
+    margin-left: 0;
+  }
+
+  .random_content img {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    object-fit: contain;
+  }
+
+  .random_btn_group {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+    margin: 1rem 6rem;
+  }
+}

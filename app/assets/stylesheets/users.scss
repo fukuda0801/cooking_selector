@@ -1,12 +1,17 @@
 /*アカウント登録画面、ログイン画面*/
+.user_form_page {
+  background-color: #ffe8d421;
+  padding: 5rem 10rem;
+}
+
 .user_form {
-  margin: 5rem 10rem ;
-  padding: 3rem;
+  padding: 2rem 4rem;
   border: 2px solid #ffc7af;
   border-radius: 10px;
   box-shadow: 2px 2px 2px 2px #ffc7af;
   background-image: image-url('form_back.jpg');
   font-family: sans-serif;
+  font-size: 0.9rem;
   color: #666666;
 }
 
@@ -20,7 +25,7 @@
 .user_form_btn {
   font-size: 1.3rem;
   padding: 0.3rem 1rem;
-  margin: auto;
+  margin: 1rem auto;
   display: block;
   background-color: white;
   color: #666;
@@ -82,4 +87,89 @@
 
 .field_with_errors {
   display: contents;
+}
+
+/* お気に入り料理ページ */
+.favorite_dish_page {
+  background-color: #ffe8d421;
+  color: #666;
+}
+
+.favorite_dish_main {
+  padding: 2rem;
+}
+
+.favorite_dish_title {
+  font-size: 1.5rem;
+}
+
+.favorite_dishes {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  gap: 2rem 2rem;
+  background-color: white;
+  padding: 1rem;
+}
+
+.favorite_dish_img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  border: solid 2px #666;
+  border-radius: 5px;
+}
+
+.favorite_dish_content a {
+  text-decoration: none;
+}
+
+.favorite_dish_name {
+  color: #666;
+  padding-left: 1rem;
+  font-size: 1.2rem;
+}
+
+/* レスポンシブ対応(スマホ、タブレット向け) */
+@media (max-width: 500px) {
+  .user_form_page {
+    padding: 5rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .favorite_dishes {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .favorite_dish_name {
+    font-size: 1rem;
+  }
+}
+
+@media (min-width: 501px) and (max-width: 960px) {
+  .user_form_page {
+    padding: 5rem 1rem;
+  }
+
+  .user_form .col-sm-2,
+  .user_form .col-sm-10 {
+    flex: 0 0 100%;
+    max-width: 100%;
+  }
+  .user_form .col-form-label,
+  .user_form .form-control {
+    margin-bottom: 0.5rem;
+  }
+}
+
+@media (min-width: 961px) and (max-width: 1090px) {
+  .user_form .col-sm-2 {
+    flex: 0 0 30%;
+    max-width: 30%;
+  }
+  .user_form .col-sm-10 {
+    flex: 0 0 70%;
+    max-width: 70%;
+  }
 }
