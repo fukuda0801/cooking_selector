@@ -29,7 +29,7 @@
 .home_random::after {
   content: "";
   flex: 1;
-  background-image: image-url('random_search.jpg');
+  background-image: image-url('random_search.jpeg');
   background-size: cover;
   background-position: center;
 }
@@ -89,7 +89,7 @@
 .home_condition::before {
   content: "";
   flex: 1;
-  background-image: image-url('conditional_search.jpg');
+  background-image: image-url('conditional_search.jpeg');
   background-size: cover;
   background-position: center;
 }
@@ -168,7 +168,7 @@
 .home_search::after {
   content: "";
   flex: 1;
-  background-image: image-url('search.jpg');
+  background-image: image-url('search.jpeg');
   background-size: cover;
   background-position: center;
 }
