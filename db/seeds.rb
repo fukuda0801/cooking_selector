@@ -13,7 +13,7 @@ User.create!(
   email: "user@example.com",
   password: "password",
   password_confirmation: "password",
-  confirmed_at: Time.now
+  confirmed_at: Time.now,
   sex: "男"
 )
 
