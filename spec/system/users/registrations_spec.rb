@@ -15,7 +15,7 @@ RSpec.describe "Registration", type: :system do
         fill_in "メールアドレス", with: "abc@abc.com"
         fill_in "パスワード", with: "password"
         fill_in "パスワード確認", with: "password"
-        choose "男性"
+        choose "sex_male"
         click_on "新規登録する"
 
         email = ActionMailer::Base.deliveries.last
@@ -36,7 +36,7 @@ RSpec.describe "Registration", type: :system do
         fill_in "メールアドレス", with: ""
         fill_in "パスワード", with: "password"
         fill_in "パスワード確認", with: "password"
-        choose "女性"
+        choose "sex_female"
         click_on "新規登録する"
 
         expect(current_path).to eq "/users"
@@ -62,7 +62,7 @@ RSpec.describe "Registration", type: :system do
         fill_in "新しいパスワード", with: "newpassword"
         fill_in "パスワード確認", with: "newpassword"
         fill_in "現在のパスワード", with: user.password
-        choose "男性"
+        choose "sex_male"
         click_on "変更を保存する"
 
         expect(current_path).to eq root_path
@@ -86,7 +86,7 @@ RSpec.describe "Registration", type: :system do
         fill_in "新しいパスワード", with: "newpassword"
         fill_in "パスワード確認", with: "newpassword"
         fill_in "現在のパスワード", with: user.password
-        choose "男性"
+        choose "sex_male"
         click_on "変更を保存する"
 
         expect(page).to have_content "が入力されていません。"

@@ -4,7 +4,7 @@
     <div class="header_btn_group" id="navbarCollapse">
       <% if user_signed_in? %>
         <div class="dropdown">
-          <button class="btn btn-primary dropdown-toggle dropdown_login_btn" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+          <button class="btn btn-primary dropdown-toggle dropdown_login_btn" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-expanded="false">
             <%= current_user.name %>
           </button>
           <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
