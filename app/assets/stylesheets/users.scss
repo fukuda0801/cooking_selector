@@ -124,6 +124,14 @@
   text-decoration: none;
 }
 
+.favorite_dish_content a:hover {
+  text-decoration: none;
+}
+
+.favorite_dish_content a:hover .favorite_dish_name {
+  color: #ffad48;
+}
+
 .favorite_dish_name {
   color: #666;
   padding-left: 1rem;

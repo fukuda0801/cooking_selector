@@ -117,6 +117,10 @@
     padding: 2px 6px;
     margin: 2px 0;
   }
+
+  .dropdown-menu {
+    min-width: 100%; /* ドロップダウンメニューの最小幅をボタンの幅に合わせます */
+  }
 }
 
 @media (min-width: 601px) and (max-width: 725px) {
