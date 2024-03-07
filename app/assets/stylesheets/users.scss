@@ -1,7 +1,7 @@
 /*アカウント登録画面、ログイン画面*/
 .user_form_page {
   background-color: #ffe8d421;
-  padding: 5rem 10rem;
+  padding: 5rem 10rem 20rem;
 }
 
 .user_form {
@@ -179,5 +179,20 @@
   .user_form .col-sm-10 {
     flex: 0 0 70%;
     max-width: 70%;
+  }
+}
+
+/* レスポンシブ対応(大きいディスプレイ向け) */
+@media screen and (min-width: 1441px) {
+  .user_form {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .favorite_dish_main {
+    max-width: 1440px;
+    margin: 0 auto;
   }
 }
