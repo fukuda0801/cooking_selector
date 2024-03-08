@@ -1,44 +1,35 @@
 version: 2.1
 
 orbs:
-  heroku: circleci/heroku@2.0
+  ruby: circleci/ruby@1.1
+  heroku: circleci/heroku@1.2.6
 
 jobs:
   build_and_test:
     docker:
-      - image: cimg/ruby:3.0.2
+      - image: cimg/ruby:3.1.0
     steps:
       - checkout
       - setup_remote_docker:
-          version: 20.10.14
+          version: 20.10.7
+          docker_layer_caching: true
       - run:
-          name: Create an empty .env file
-          command: touch .env
-      - run:
-          name: Install Dockerize
+          name: Install Docker Compose
           command: |
-            if [ ! -f /usr/local/bin/dockerize ]; then
-              wget https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-linux-amd64-v0.6.1.tar.gz
-              sudo tar -xzvf dockerize-linux-amd64-v0.6.1.tar.gz -C /usr/local/bin
-            fi
+            sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
+            sudo chmod +x /usr/local/bin/docker-compose
       - run:
-          name: Build and start containers
+          name: Run Docker Compose and Tests
           command: |
-            docker-compose up -d
-            dockerize -wait tcp://db:3306 -timeout 1m
-      - run:
-          name: Setup database
-          command: |
-            docker-compose exec web rails db:setup
-      - run:
-          name: Run tests
-          command: |
-            docker-compose exec web rspec
-            docker-compose exec web rubocop
+            docker-compose -f docker-compose.ci.yml up --build -d
+            docker-compose -f docker-compose.ci.yml run web bundle exec rails db:prepare
+            docker-compose -f docker-compose.ci.yml run web bundle exec rspec
+            docker-compose -f docker-compose.ci.yml run web bundle exec rubocop
+            docker-compose -f docker-compose.ci.yml down
 
-  heroku_deploy:
+  deploy:
     docker:
-      - image: cimg/ruby:3.0.2
+      - image: cimg/ruby:3.1.0
     steps:
       - checkout
       - heroku/install
@@ -46,16 +37,16 @@ jobs:
           name: Deploy to Heroku
           command: |
             heroku git:remote -a $HEROKU_APP_NAME
-            git push heroku main:master
+            git push heroku $CIRCLE_BRANCH:master
 
 workflows:
-  version: 2.1
+  version: 2
   build_deploy:
     jobs:
       - build_and_test
-      - heroku_deploy:
+      - deploy:
           requires:
             - build_and_test
           filters:
             branches:
-              only: main
+              only: master
