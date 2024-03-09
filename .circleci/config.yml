@@ -16,6 +16,7 @@ jobs:
       - run:
           name: Install Docker Compose
           command: |
+            # Update this comment to force a cache refresh
             sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
 
@@ -24,6 +25,7 @@ jobs:
           command: |
             docker-compose -f docker-compose.ci.yml up --build -d
             docker-compose -f docker-compose.ci.yml run --rm web bash -c "dockerize -wait tcp://db:3306 -timeout 1m"
+            docker-compose -f docker-compose.ci.yml run web yarn install --force
             docker-compose -f docker-compose.ci.yml run web bundle exec rails webpacker:compile
             docker-compose -f docker-compose.ci.yml run web bundle exec rails db:prepare
             docker-compose -f docker-compose.ci.yml run web bundle exec rspec
