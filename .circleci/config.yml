@@ -24,6 +24,7 @@ jobs:
           command: |
             docker-compose -f docker-compose.ci.yml up --build -d
             docker-compose -f docker-compose.ci.yml run --rm web bash -c "dockerize -wait tcp://db:3306 -timeout 1m"
+            docker-compose -f docker-compose.ci.yml run web bundle exec rails webpacker:compile
             docker-compose -f docker-compose.ci.yml run web bundle exec rails db:prepare
             docker-compose -f docker-compose.ci.yml run web bundle exec rspec
             docker-compose -f docker-compose.ci.yml run web bundle exec rubocop

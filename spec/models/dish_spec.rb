@@ -14,8 +14,8 @@ RSpec.describe Dish, type: :model do
       end
 
       it "nameがすでに存在している場合" do
-        create(:dish, name: "オムライス")
-        duplicate_dish = build(:dish, name: "オムライス")
+        create(:dish, name: "味噌汁")
+        duplicate_dish = build(:dish, name: "味噌汁")
         expect(duplicate_dish).not_to be_valid
       end
 
@@ -67,8 +67,8 @@ RSpec.describe Dish, type: :model do
     end
 
     context "self.search_by_tag_names" do
-      let!(:tag1) { create(:tag, name: "卵") }
-      let!(:tag2) { create(:tag, name: "米") }
+      let!(:tag1) { create(:tag, name: "わかめ") }
+      let!(:tag2) { create(:tag, name: "豆腐") }
       let!(:dish_with_tag1) { create(:dish) }
       let!(:dish_with_tag2) { create(:dish) }
 
@@ -78,7 +78,7 @@ RSpec.describe Dish, type: :model do
       end
 
       it "選んだtagを持つ料理を取得できるか" do
-        result = Dish.search_by_tag_names(["卵"])
+        result = Dish.search_by_tag_names(["わかめ"])
         expect(result).to include(dish_with_tag1)
         expect(result).not_to include(dish_with_tag2)
       end
