@@ -30,17 +30,13 @@ jobs:
           name: Add node_modules/.bin to PATH
           command: echo 'export PATH="$PATH:./node_modules/.bin"' >> $BASH_ENV
       - run:
-          name: Install Yarn Dependencies
+          name: Install Webpacker
           command: |
-            docker-compose -f docker-compose.ci.yml run --rm web yarn install
+            docker-compose -f docker-compose.ci.yml run --rm web bundle exec rails webpacker:install
       - run:
           name: Create Database
           command: |
             docker-compose -f docker-compose.ci.yml run --rm web bundle exec rails db:create
-      - run:
-          name: Compile Webpacker
-          command: |
-            docker-compose -f docker-compose.ci.yml run --rm web bundle exec rails webpacker:compile
       - run:
           name: Load Database Schema
           command: |
