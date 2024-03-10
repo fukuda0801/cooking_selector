@@ -34,6 +34,10 @@ jobs:
           command: |
             docker-compose -f docker-compose.ci.yml run --rm web bundle exec rails db:create
       - run:
+          name: assets compile
+          command: |
+            docker-compose -f docker-compose.ci.yml run --rm web bundle exec rake assets:precompile
+      - run:
           name: Load Database Schema
           command: |
             docker-compose -f docker-compose.ci.yml run --rm web bundle exec rails db:schema:load
