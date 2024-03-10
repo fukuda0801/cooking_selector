@@ -31,6 +31,10 @@ jobs:
           command: |
             docker-compose -f docker-compose.ci.yml run --rm web bundle exec rails db:create
       - run:
+          name: Compile Webpacker
+          command: |
+            docker-compose -f docker-compose.ci.yml run --rm web bundle exec rails webpacker:compile
+      - run:
           name: Load Database Schema
           command: |
             docker-compose -f docker-compose.ci.yml run --rm web bundle exec rails db:schema:load
