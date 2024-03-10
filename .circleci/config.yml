@@ -27,9 +27,9 @@ jobs:
           command: |
             docker-compose -f docker-compose.ci.yml run --rm web dockerize -wait tcp://db:3306 -timeout 1m
       - run:
-          name: Setup Database
+          name: Load Database Schema
           command: |
-            docker-compose -f docker-compose.ci.yml run --rm web bundle exec rails db:prepare
+            docker-compose -f docker-compose.ci.yml run --rm web bundle exec rails db:schema:load
       - run:
           name: Run Tests
           command: |
