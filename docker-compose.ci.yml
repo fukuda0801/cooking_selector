@@ -9,9 +9,7 @@ services:
     build: .
     environment:
       RAILS_ENV: test
-      NODE_ENV: test
       DATABASE_URL: "mysql2://root:password@db/cooking_selector_test"
-    command: bash -c "bundle exec rails db:prepare && bundle exec rails webpacker:install && bundle exec rspec"
     depends_on:
       - db
 

@@ -16,21 +16,31 @@ jobs:
       - run:
           name: Install Docker Compose
           command: |
-            # Update this comment to force a cache refresh
             sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
             sudo chmod +x /usr/local/bin/docker-compose
-
       - run:
-          name: Run Docker Compose and Tests
+          name: Build and Run Containers
           command: |
             docker-compose -f docker-compose.ci.yml up --build -d
-            docker-compose -f docker-compose.ci.yml run --rm web bash -c "dockerize -wait tcp://db:3306 -timeout 1m"
-            docker-compose -f docker-compose.ci.yml run web yarn install --force
-            docker-compose -f docker-compose.ci.yml run web yarn webpack --version
-            docker-compose -f docker-compose.ci.yml run web bundle exec rails webpacker:compile
-            docker-compose -f docker-compose.ci.yml run web bundle exec rails db:prepare
-            docker-compose -f docker-compose.ci.yml run web bundle exec rspec
-            docker-compose -f docker-compose.ci.yml run web bundle exec rubocop
+      - run:
+          name: Wait for DB
+          command: |
+            docker-compose -f docker-compose.ci.yml run --rm web dockerize -wait tcp://db:3306 -timeout 1m
+      - run:
+          name: Setup Database
+          command: |
+            docker-compose -f docker-compose.ci.yml run --rm web bundle exec rails db:prepare
+      - run:
+          name: Run Tests
+          command: |
+            docker-compose -f docker-compose.ci.yml run --rm web bundle exec rspec
+      - run:
+          name: Check Coding Style
+          command: |
+            docker-compose -f docker-compose.ci.yml run --rm web bundle exec rubocop
+      - run:
+          name: Shutdown Docker Containers
+          command: |
             docker-compose -f docker-compose.ci.yml down
 
   deploy:
