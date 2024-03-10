@@ -1,2 +1,11 @@
 module DishesHelper
+  def tag_category_select(tag_category)
+    label_tag = label_tag "search[tags][#{tag_category.category}]", tag_category.category, class: "home_condition_tag"
+    select_tag = select_tag "search[tags][#{tag_category.category}]",
+                            options_from_collection_for_select(
+                              Tag.where(category: tag_category.category),
+                              :name, :name, selected: params.dig(:search, :tags, tag_category.category)),
+                            include_blank: "未選択", class: "home_condition_form"
+    "#{label_tag}#{select_tag}".html_safe
+  end
 end
