@@ -3,8 +3,12 @@
 <div class="search_dish_page">
   <div class="search_dish_main">
     <h4 class="search_dish_title">〜 ジャンルから料理を決めてみよう！ 〜</h4>
-    <h4 class="search_dish_genre">選択された種類: <%= @genre_selected %></h4>
-    <p class="search_dish_intro"><%= @genre_selected %>の料理が表示されます。</p>
+    <% if @genre_selected.present? %>
+      <h4 class="search_dish_genre">選択された種類: <%= @genre_selected %></h4>
+      <p class="search_dish_intro"><%= @genre_selected %>の料理が表示されます。</p>
+    <% else %>
+      <h4 class="search_dish_genre">全てのジャンルの料理が表示されます。</h4>
+    <% end %>
     <%= paginate @results %>
     <div class="search_dishes">
       <% @results.each do |dish| %>

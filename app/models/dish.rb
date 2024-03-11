@@ -28,11 +28,11 @@ class Dish < ApplicationRecord
 
   def popularity_rank
     dishes_with_counts = Dish.left_joins(:user_dishes)
-                             .group('dishes.id')
-                             .order(Arel.sql('COUNT(user_dishes.user_id) DESC, dishes.created_at DESC'))
-                             .select('dishes.id')
+      .group('dishes.id')
+      .order(Arel.sql('COUNT(user_dishes.user_id) DESC, dishes.created_at DESC'))
+      .select('dishes.id')
     ranks = dishes_with_counts.map(&:id)
-    rank_position = ranks.index(self.id) + 1
+    ranks.index(id) + 1
   end
 
   def self.ransackable_associations(_auth_object = nil)

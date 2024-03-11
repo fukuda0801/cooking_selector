@@ -3,14 +3,18 @@
 <div class="condition_dish_page">
   <div class="condition_dish_main">
     <h4 class="condition_dish_title">〜 食事を材料から決めてみよう！ 〜</h4>
-    <div class="condition_genre_group">
-      <h4 class="condition_dish_genre">選択された材料:</h4>
-      <ul class="condition_dish_list">
-        <% @selected_tag_names.each do |tag_name| %>
-          <li><%= tag_name %></li>
-        <% end %>
-      </ul>
-    </div>
+    <% if @selected_tag_names.present? %>
+      <div class="condition_genre_group">
+        <h4 class="condition_dish_genre">選択された材料:</h4>
+        <ul class="condition_dish_list">
+          <% @selected_tag_names.each do |tag_name| %>
+            <li><%= tag_name %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% else %>
+      <h4 class="condition_genre_group">全料理が表示されます。</h4>
+    <% end %>
     <p class="condition_dish_intro">選んだ材料が使用されている料理が表示されます。</p>
     <%= paginate @dishes %>
     <div class="condition_dishes">

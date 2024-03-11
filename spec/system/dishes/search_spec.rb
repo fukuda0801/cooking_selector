@@ -44,6 +44,7 @@ RSpec.describe "search", type: :system do
       expect(page).to have_content ja_dish1.name
       expect(page).to have_content ja_dish2.name
       expect(page).to have_content ch_dish.name
+      expect(page).to have_content "全てのジャンルの料理が表示されます。"
     end
   end
 end

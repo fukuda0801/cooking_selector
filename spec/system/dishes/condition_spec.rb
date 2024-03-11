@@ -63,6 +63,7 @@ RSpec.describe "condition", type: :system do
       expect(page).to have_content dish1.name
       expect(page).to have_content dish2.name
       expect(page).to have_content dish3.name
+      expect(page).to have_content "全料理が表示されます。"
     end
   end
 end
