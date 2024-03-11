@@ -53,6 +53,8 @@ RSpec.describe "random", type: :system do
       expect(page).to have_content(dish1.cook_time).or have_content(dish2.cook_time)
       expect(page).to have_content(dish1.calorie).or have_content(dish2.calorie)
       expect(page).to have_content tag.name
+      expect(page).to have_content(dish1.favorites_count).or have_content(dish2.favorites_count)
+      expect(page).to have_content(dish1.popularity_rank).or have_content(dish2.popularity_rank)
       expect(page).to have_content(dish1.description).or have_content(dish2.description)
     end
   end

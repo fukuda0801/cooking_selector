@@ -30,6 +30,7 @@
             </ul>
           </div>
           <p class="dish_detail">お気に入り登録数 : <%= @dish.favorites_count %>人</p>
+          <p class="dish_detail">人気ランキング : <%= @dish.popularity_rank %>位 / <%= Dish.count %>位</p>
           <p class="dish_detail">ひとこと : <%= @dish.description %></p>
         </div>
       </div>

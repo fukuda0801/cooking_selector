@@ -49,6 +49,8 @@ RSpec.describe "show", type: :system do
       expect(page).to have_content dish.cook_time
       expect(page).to have_content dish.calorie
       expect(page).to have_content tag.name
+      expect(page).to have_content dish.favorites_count
+      expect(page).to have_content dish.popularity_rank
       expect(page).to have_content dish.description
     end
   end
