@@ -6,7 +6,7 @@
       <h4 class="dish_title">〜 本日の料理はこちら！！ 〜</h4>
       <p class="dish_intro">ランダムで料理を1つ表示します。</p>
       <div class="dish_btn_group">
-        <%= link_to "もう一度選ぶ！", random_dishes_path, class: "dish_btn" %>
+        <%= link_to "もう一度選ぶ！", random_dishes_path, method: :get, class: "dish_btn" %>
         <%= link_to "トップページに戻る", root_path, class: "dish_btn" %>
         <% if user_signed_in? %>
           <% if current_user.dishes.include?(@dish) %>
