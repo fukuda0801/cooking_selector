@@ -15,7 +15,7 @@ RSpec.describe "Registration", type: :system do
         fill_in "メールアドレス", with: "abc@abc.com"
         fill_in "パスワード", with: "password"
         fill_in "パスワード確認", with: "password"
-        choose "男性"
+        choose "sex_male"
         click_on "新規登録する"
 
         email = ActionMailer::Base.deliveries.last
@@ -36,7 +36,7 @@ RSpec.describe "Registration", type: :system do
         fill_in "メールアドレス", with: ""
         fill_in "パスワード", with: "password"
         fill_in "パスワード確認", with: "password"
-        choose "女性"
+        choose "sex_female"
         click_on "新規登録する"
 
         expect(current_path).to eq "/users"
@@ -50,11 +50,7 @@ RSpec.describe "Registration", type: :system do
 
     context "編集後の情報に問題がない場合" do
       it "アカウントの編集ができること" do
-        visit new_user_session_path
-        fill_in "アカウント名", with: user.name
-        fill_in "パスワード", with: user.password
-        click_on "ログインする"
-
+        sign_in user
         visit user_path(user.id)
         click_on "こちら"
         expect(current_path).to eq edit_user_registration_path
@@ -62,7 +58,7 @@ RSpec.describe "Registration", type: :system do
         fill_in "新しいパスワード", with: "newpassword"
         fill_in "パスワード確認", with: "newpassword"
         fill_in "現在のパスワード", with: user.password
-        choose "男性"
+        choose "sex_male"
         click_on "変更を保存する"
 
         expect(current_path).to eq root_path
@@ -74,11 +70,7 @@ RSpec.describe "Registration", type: :system do
 
     context "編集後の情報に問題がある場合" do
       it "アカウントの編集ができないこと" do
-        visit new_user_session_path
-        fill_in "アカウント名", with: user.name
-        fill_in "パスワード", with: user.password
-        click_on "ログインする"
-
+        sign_in user
         visit user_path(user.id)
         click_on "こちら"
         expect(current_path).to eq edit_user_registration_path
@@ -86,7 +78,7 @@ RSpec.describe "Registration", type: :system do
         fill_in "新しいパスワード", with: "newpassword"
         fill_in "パスワード確認", with: "newpassword"
         fill_in "現在のパスワード", with: user.password
-        choose "男性"
+        choose "sex_male"
         click_on "変更を保存する"
 
         expect(page).to have_content "が入力されていません。"
@@ -109,11 +101,8 @@ RSpec.describe "Registration", type: :system do
     let!(:user_delete) { create(:user) }
 
     it "ユーザーが退会できること" do
-      visit new_user_session_path
-      fill_in "アカウント名", with: user_delete.name
-      fill_in "パスワード", with: user_delete.password
-      click_on "ログインする"
-
+      sign_in user_delete
+      visit root_path
       click_on "退会する"
       expect { user_delete.reload }.to raise_error(ActiveRecord::RecordNotFound)
     end

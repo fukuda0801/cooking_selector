@@ -29,12 +29,7 @@ RSpec.describe "Sessions", type: :system do
 
   describe "アカウントログアウト" do
     it "ユーザーがログアウトできること" do
-      visit new_user_session_path
-      fill_in 'アカウント名', with: user.name
-      fill_in 'パスワード', with: user.password
-      click_on 'ログインする'
-      expect(current_path).to eq root_path
-
+      sign_in user
       visit root_path
       click_on 'ログアウト'
       expect(page).to have_content('ログアウトしました。')

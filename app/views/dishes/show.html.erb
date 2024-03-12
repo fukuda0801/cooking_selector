@@ -1,53 +1,57 @@
 <% content_for :title, @dish.name %>
 
-<div class="random_page">
-  <div class="random_main">
-    <div class="show_btn_group">
-      <%= link_to "トップページに戻る", root_path, class: "random_dish_btn" %>
-      <% if user_signed_in? %>
-        <% if current_user.dishes.include?(@dish) %>
-          <%= link_to 'お気に入りから削除', user_dish_path(@dish), method: :delete, class: "random_dish_btn" %>
-        <% else %>
-          <%= link_to 'お気に入りに追加', user_dishes_path(dish_id: @dish.id), method: :post, class: "random_dish_btn" %>
+<div class="dish_whole">
+  <div class="dish_page">
+    <div class="dish_main">
+      <div class="show_btn_group">
+        <%= link_to "トップページに戻る", root_path, class: "dish_btn" %>
+        <% if user_signed_in? %>
+          <% if current_user.dishes.include?(@dish) %>
+            <%= link_to 'お気に入りから削除', user_dish_path(@dish), method: :delete, class: "dish_btn" %>
+          <% else %>
+            <%= link_to 'お気に入りに追加', user_dishes_path(dish_id: @dish.id), method: :post, class: "dish_btn" %>
+          <% end %>
         <% end %>
-      <% end %>
+      </div>
+      <h4 class="dish_title">〜 <%= @dish.name %> 〜</h4>
+      <div class="dish_content">
+        <%= image_tag(@dish.image, alt: "料理画像") if @dish.image.attached? %>
+        <div class="dish_details">
+          <p class="dish_detail">ジャンル : <%= @dish.genre %></p>
+          <p class="dish_detail">難易度 : <%= @dish.difficulty %></p>
+          <p class="dish_detail">調理時間 : <%= @dish.cook_time %>分</p>
+          <p class="dish_detail">カロリー : <%= @dish.calorie %>kcal</p>
+          <div class="dish_ingredients">
+            <p class="dish_ingredient_title">主な材料 :</p>
+            <ul class="dish_ingredients_content">
+              <% @dish.tags.each do |tag| %>
+                <li class="dish_ingredient"><%= tag.name %></li>
+              <% end %>
+            </ul>
+          </div>
+          <p class="dish_detail">お気に入り登録数 : <%= @dish.favorites_count %>人</p>
+          <p class="dish_detail">人気ランキング : <%= @dish.popularity_rank %>位 / <%= Dish.count %>位</p>
+          <p class="dish_detail">ひとこと : <%= @dish.description %></p>
+        </div>
+      </div>
     </div>
-    <h4 class="random_title">〜 <%= @dish.name %> 〜</h4>
-    <div class="random_content">
-      <%= image_tag(@dish.image, alt: "料理画像") if @dish.image.attached? %>
-      <div class="random_dish_details">
-        <p class="random_dish_detail">ジャンル : <%= @dish.genre %></p>
-        <p class="random_dish_detail">難易度 : <%= @dish.difficulty %></p>
-        <p class="random_dish_detail">調理時間 : <%= @dish.cook_time %>分</p>
-        <p class="random_dish_detail">カロリー : <%= @dish.calorie %>kcal</p>
-        <div class="random_ingredients">
-          <p class="random_ingredient_title">主な材料 :</p>
-          <ul class="random_ingredients_content">
-            <% @dish.tags.each do |tag| %>
-              <li class="random_ingredient"><%= tag.name %></li>
+    <div class="show_dish_recipe">
+      <p class="show_dish_recipe_title">関連するレシピ一覧 (楽天レシピ様より)</p>
+      <p class="show_dish_recipe_intro">レシピ名を選択すると外部サイトへ移動します。</p>
+      <% if @recipes["result"].present? %>
+        <div class="show_dish_recipes">
+          <ul>
+            <% @recipes["result"].each do |recipe| %>
+              <li>
+                <a href="<%= recipe["recipeUrl"] %>" target="_blank", class="show_dish_recipe_url"><%= recipe["recipeTitle"] %></a>
+                <p class="show_dish_recipe_intro"><%= recipe["recipeDescription"] %></p>
+              </li>
             <% end %>
           </ul>
         </div>
-        <p class="random_dish_detail">ひとこと : <%= @dish.description %></p>
-      </div>
+      <% else %>
+        <p>レシピが見つかりませんでした。</p>
+      <% end %>
     </div>
-  </div>
-  <div class="show_dish_recipe">
-    <p class="show_dish_recipe_title">関連するレシピ一覧 (楽天レシピ様より)</p>
-    <p class="show_dish_recipe_intro">レシピ名を選択すると外部サイトへ移動します。</p>
-    <% if @recipes["result"].present? %>
-      <div class="show_dish_recipes">
-        <ul>
-          <% @recipes["result"].each do |recipe| %>
-            <li>
-              <a href="<%= recipe["recipeUrl"] %>" target="_blank", class="show_dish_recipe_url"><%= recipe["recipeTitle"] %></a>
-              <p class="show_dish_recipe_intro"><%= recipe["recipeDescription"] %></p>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-    <% else %>
-      <p>レシピが見つかりませんでした。</p>
-    <% end %>
   </div>
 </div>

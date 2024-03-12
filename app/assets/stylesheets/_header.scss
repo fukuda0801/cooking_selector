@@ -80,6 +80,14 @@
   color: #ccc;
 }
 
+.header_main .btn-primary:not(:disabled):not(.disabled):active,
+.header_main .btn-primary:not(:disabled):not(.disabled).active,
+.header_main .show > .btn-primary.dropdown-toggle {
+  background-color: #ffad48;
+  border-color: #ffad48;
+  color: white;
+}
+
 /* レスポンシブ対応 */
 @media (max-width: 600px) {
   .header_content {
@@ -108,6 +116,10 @@
     font-size: 0.7rem;
     padding: 2px 6px;
     margin: 2px 0;
+  }
+
+  .dropdown-menu {
+    min-width: 100%; /* ドロップダウンメニューの最小幅をボタンの幅に合わせます */
   }
 }
 

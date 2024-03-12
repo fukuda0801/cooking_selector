@@ -13,23 +13,25 @@ User.create!(
   email: "user@example.com",
   password: "password",
   password_confirmation: "password",
-  confirmed_at: Time.now
+  confirmed_at: Time.now,
   sex: "男"
 )
 
 tag_egg = Tag.create!(
   name: "卵",
-  category: "食材"
+  category: "卵・乳"
 )
+
+image_path = Rails.root.join('app/assets/images/default_dish.jpeg')
 
 dish = Dish.create!(
   name: "オムライス",
-  description: "卵をふんだんに使ったオムライス。",
+  description: "実は日本発祥の料理！！",
   cook_time: 20,
-  calorie: 500,
-  difficulty: "初心者",
+  calorie: 800,
+  difficulty: "簡単",
   genre: "洋食",
   category_full_id: "14-121"
 )
-
+dish.image.attach(io: File.open(image_path), filename: 'default_dish.jpg', content_type: 'image/jpeg')
 dish.tags << tag_egg

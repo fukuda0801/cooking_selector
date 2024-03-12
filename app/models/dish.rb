@@ -22,12 +22,23 @@ class Dish < ApplicationRecord
     Dish.joins(:tags).where(tags: { name: tag_names }).distinct
   end
 
-  # Ransackで検索可能な関連付けを指定
+  def favorites_count
+    users.count
+  end
+
+  def popularity_rank
+    dishes_with_counts = Dish.left_joins(:user_dishes)
+      .group('dishes.id')
+      .order(Arel.sql('COUNT(user_dishes.user_id) DESC, dishes.created_at DESC'))
+      .select('dishes.id')
+    ranks = dishes_with_counts.map(&:id)
+    ranks.index(id) + 1
+  end
+
   def self.ransackable_associations(_auth_object = nil)
     ['tags']
   end
 
-  # Ransackで検索可能な属性を指定
   def self.ransackable_attributes(_auth_object = nil)
     %w[name description cook_time calorie genre]
   end

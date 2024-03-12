@@ -1,7 +1,7 @@
 /*アカウント登録画面、ログイン画面*/
 .user_form_page {
   background-color: #ffe8d421;
-  padding: 5rem 10rem;
+  padding: 5rem 10rem 20rem;
 }
 
 .user_form {
@@ -9,7 +9,7 @@
   border: 2px solid #ffc7af;
   border-radius: 10px;
   box-shadow: 2px 2px 2px 2px #ffc7af;
-  background-image: image-url('form_back.jpg');
+  background-image: image-url('form_back.jpeg');
   font-family: sans-serif;
   font-size: 0.9rem;
   color: #666666;
@@ -48,7 +48,7 @@
 }
 
 .user_info_row {
-  border-bottom: 1px solid #666
+  border-bottom: 1px solid #666;
 }
 
 .user_info_links {
@@ -114,14 +114,22 @@
 
 .favorite_dish_img {
   width: 100%;
-  height: auto;
-  object-fit: contain;
+  height: 250px;
+  object-fit: cover;
   border: solid 2px #666;
   border-radius: 5px;
 }
 
 .favorite_dish_content a {
   text-decoration: none;
+}
+
+.favorite_dish_content a:hover {
+  text-decoration: none;
+}
+
+.favorite_dish_content a:hover .favorite_dish_name {
+  color: #ffad48;
 }
 
 .favorite_dish_name {
@@ -163,7 +171,7 @@
   }
 }
 
-@media (min-width: 961px) and (max-width: 1090px) {
+@media (min-width: 961px) and (max-width: 1220px) {
   .user_form .col-sm-2 {
     flex: 0 0 30%;
     max-width: 30%;
@@ -171,5 +179,20 @@
   .user_form .col-sm-10 {
     flex: 0 0 70%;
     max-width: 70%;
+  }
+}
+
+/* レスポンシブ対応(大きいディスプレイ向け) */
+@media screen and (min-width: 1441px) {
+  .user_form {
+    max-width: 1120px;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: 1441px) {
+  .favorite_dish_main {
+    max-width: 1440px;
+    margin: 0 auto;
   }
 }

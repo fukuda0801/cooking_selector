@@ -12,8 +12,8 @@ RSpec.describe Tag, type: :model do
   end
 
   it "nameがすでに存在している場合、無効" do
-    create(:tag, name: "卵")
-    duplicate_tag = build(:tag, name: "卵")
+    create(:tag, name: "わかめ")
+    duplicate_tag = build(:tag, name: "わかめ")
     expect(duplicate_tag).not_to be_valid
   end
 
