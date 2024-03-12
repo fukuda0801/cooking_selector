@@ -69,6 +69,7 @@ https://cooking-selector-5ef1831c3338.herokuapp.com/
   - 統合テスト(Request Spec)
   - 単体テスト(Model Spec)
   - ヘルパーテスト(Helper Spec)
+- #### RuboCop
 
 ## ER図
 ![ER_image](https://github.com/fukuda0801/cooking_selector/assets/142757659/7e076d2e-6584-4fe4-a964-dd06c3ea640f)
