@@ -11,6 +11,11 @@ class DishesController < ApplicationController
     @recipes = @rakuten_service.fetch_recipes(@dish.category_full_id)
   end
 
+  def keyword
+    @dishes = Dish.reference(params[:keyword]).page(params[:page])
+    @reference_word = params[:keyword]
+  end
+
   def search
     @q = Dish.ransack(params[:q])
     @results = @q.result(distinct: true).with_attached_image.page(params[:page])

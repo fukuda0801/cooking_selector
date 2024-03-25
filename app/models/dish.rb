@@ -22,6 +22,14 @@ class Dish < ApplicationRecord
     Dish.joins(:tags).where(tags: { name: tag_names }).distinct
   end
 
+  def self.reference(keyword)
+    if keyword.present?
+      Dish.joins(:tags).where('dishes.name LIKE :keyword OR tags.name LIKE :keyword', keyword: "%#{keyword}%").distinct
+    else
+      Dish.all
+    end
+  end
+
   def favorites_count
     users.count
   end

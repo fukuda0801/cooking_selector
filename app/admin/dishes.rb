@@ -47,7 +47,7 @@ ActiveAdmin.register Dish do
       f.input :genre
       f.input :tags, as: :check_boxes
       f.input :category_full_id
-      f.input :image, :as => :file
+      f.input :image, as: :file
     end
     f.actions
   end

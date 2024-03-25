@@ -151,6 +151,52 @@
   border: 2px solid #ffad48;
 }
 
+/* キーワード検索部分 */
+.home_keyword {
+  background-color: #f9951aca;
+}
+
+.home_keyword_content {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 0.3rem 10rem;
+
+}
+
+.home_keyword_title {
+  font-size: 1.2rem;
+  padding-right: 1rem;
+  padding-top: 0.7rem;
+}
+
+.keyword_form {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.keyword_field {
+  border-radius: 2rem;
+  box-shadow: none;
+  border: 2px solid #666;
+  padding-left: 1rem;
+  margin-right: 1rem;
+  width: 60%;
+  flex-grow: 1;
+}
+
+.keyword_btn {
+  color: #666;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0.2rem 0.4rem;
+  border: 2px solid #666;
+}
+
+
 /* ジャンル検索部分*/
 
 .home_search {
@@ -329,12 +375,28 @@
     display: block;
     width: auto;
     height: 200px;
-    margin-top: 20px;
     object-fit: cover;
   }
 
   .mobile_br {
     display: inline;
+  }
+}
+
+@media (max-width: 670px) {
+  .home_keyword_content {
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .home_keyword_title {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 670px) and (max-width: 960px) {
+  .home_keyword_content {
+    padding: 0.3rem 3rem;
   }
 }
 
@@ -376,4 +438,12 @@ body {
   position: sticky;
   top: 100vh;
   width: 100%;
+}
+
+/* レスポンシブ対応(大きいディスプレイ向け) */
+@media screen and (min-width: 1441px) {
+  .home_keyword_content {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
 }

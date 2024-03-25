@@ -192,39 +192,6 @@
   margin-bottom: 1rem;
 }
 
-.search_dishes {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr;
-  gap: 3rem 3rem;
-  background-color: white;
-  padding: 1rem;
-}
-
-.search_dish_content a {
-  text-decoration: none;
-  color: #666;
-}
-
-.search_dish_content a:hover {
-  text-decoration: none;
-  color: #ffad48;
-}
-
-.search_dish_name {
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
-  
-}
-
-.search_dish_img {
-  width: 100%;
-  height: 250px;
-  object-fit: cover;
-  border: solid 2px #666;
-  border-radius: 5px;
-}
-
 /* 料理詳細ページ */
 .show_btn_group {
   display: flex;
@@ -317,6 +284,26 @@
   color: #ff5656a1;
   background: linear-gradient(transparent 80%, #ff5656a1 70%);
   margin-bottom: 2rem;
+}
+
+/* キーワード検索関連 */
+.keyword_dish_page {
+  background-color: #ffe8d421;
+  color: #666;
+}
+
+.keyword_dish_main {
+  padding: 4rem;
+}
+
+.keyword_dish_title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+}
+
+.keyword_name {
+  margin: 1rem;
 }
 
 /* ページネーション関係 */
@@ -428,21 +415,12 @@
     font-size: 0.8rem;
   }
 
-  .search_dishes {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .search_dish_name {
-    font-size: 1rem;
-  }
-
   /* 材料検索ページ */
-  .condition_dish_main {
+  .condition_dish_main, .keyword_dish_main {
     padding: 2rem 0.5rem;
   }
 
-  .condition_dish_title {
+  .condition_dish_title, .keyword_dish_title {
     font-size: 1.2rem;
   }
 
@@ -494,20 +472,8 @@
     padding: 1rem;
   }
 
-  .search_dishes {
-    gap: 1.5rem 1.5rem;
-  }
-
-  .search_dish_name {
-    font-size: 1rem;
-  }
-
-  .search_dish_img {
-    height: 150px;
-  }
-
   /* 材料検索ページ */
-  .condition_dish_main {
+  .condition_dish_main, .keyword_dish_main {
     padding: 1rem;
   }
 
@@ -548,9 +514,9 @@
   }
 
   /* 料理ランキング関連 */
-.popular_page {
-  padding: 4rem;
-}
+  .popular_page {
+    padding: 4rem;
+  }
 
   .popular_dish {
     flex-direction: column;
@@ -563,7 +529,7 @@
 
 /* レスポンシブ対応(大きいディスプレイ向け) */
 @media screen and (min-width: 1441px) {
-  .condition_dish_main, .search_dish_main {
+  .condition_dish_main, .search_dish_main, .keyword_dish_main {
     max-width: 1440px;
     margin: 0 auto;
   }

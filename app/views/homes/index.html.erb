@@ -1,6 +1,16 @@
 <% content_for :title, "ホーム" %>
 
 <div class="home_main">
+  <div class="home_keyword">
+    <div class="home_keyword_content">
+      <p class="home_keyword_title">キーワード料理検索</p>
+      <%= form_with url: keyword_dishes_path, local: true, method: :get, class: "keyword_form" do |f| %>
+        <%= f.text_field :keyword, placeholder: "材料、または料理名を入力してください", class: "keyword_field" %>
+        <%= f.submit "検索", class: "keyword_btn" %>
+      <% end %>
+    </div>
+  </div>
+
   <div class="home_random">
     <div class="home_random_content">
       <h4 class="home_random_title">〜 今日の食事を決められない、<br class="mobile_br">そこのあなた！ 〜</h4>
