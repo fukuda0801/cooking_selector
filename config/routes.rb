@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get 'search'
       get 'random'
       get 'condition'
+      get 'popular'
     end
   end
 end

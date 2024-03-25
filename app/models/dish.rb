@@ -26,6 +26,13 @@ class Dish < ApplicationRecord
     users.count
   end
 
+  def self.popular(limit = 10)
+    Dish.left_joins(:user_dishes)
+      .group('dishes.id')
+      .order(Arel.sql('COUNT(user_dishes.user_id) DESC, dishes.created_at DESC'))
+      .limit(limit)
+  end
+
   def popularity_rank
     dishes_with_counts = Dish.left_joins(:user_dishes)
       .group('dishes.id')

@@ -22,6 +22,10 @@ class DishesController < ApplicationController
     @dishes = Dish.search_by_tag_names(@selected_tag_names).with_attached_image.page(params[:page])
   end
 
+  def popular
+    @popular_dishes = Dish.popular(10)
+  end
+
   private
 
   def set_rakuten_service

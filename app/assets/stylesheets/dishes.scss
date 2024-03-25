@@ -263,6 +263,62 @@
   margin: 0.5rem;
 }
 
+/* 料理ランキング関連 */
+.popular_whole {
+  background-color: #ffe8d421;
+}
+
+.popular_page {
+  padding: 5rem 10rem;
+  color: #666;
+}
+
+.popular_page_title {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  text-decoration: underline;
+  margin-bottom: 2rem;
+}
+
+.popular_dish {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  border: 2px solid #ffad48;
+  background-color: white;
+  border-radius: 2rem;
+  padding: 3rem;
+}
+
+.popular_details {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+.popular_dish_img {
+  width: 50%;
+  height: 300px;
+  border-radius: 1rem;
+  object-fit: cover;
+}
+
+.popular_dish_link {
+  color: #ffad48;
+}
+
+.popular_dish_link:hover {
+  color: #ffad48;
+}
+
+.popular_dish_rank {
+  font-size: 1.4rem;
+  color: #ff5656a1;
+  background: linear-gradient(transparent 80%, #ff5656a1 70%);
+  margin-bottom: 2rem;
+}
+
 /* ページネーション関係 */
 .pagination a {
   color: #666;
@@ -404,6 +460,31 @@
   .condition_dish_name {
     font-size: 1rem;
   }
+
+  /* 料理ランキング関連 */
+  .popular_page {
+    padding: 1rem;
+  }
+
+  .popular_page_title {
+    font-size: 1.2rem;
+  }
+
+  .popular_details {
+    font-size: 0.8rem;
+  }
+
+  .popular_dish {
+    flex-direction: column;
+  }
+  
+  .popular_dish_img {
+    width: 100%;
+  }
+
+  .popular_dish {
+    padding: 1rem;
+  }
 }
 
 /* レスポンシブ対応(タブレット向け) */
@@ -465,6 +546,19 @@
     text-align: center;
     margin: 1rem 6rem;
   }
+
+  /* 料理ランキング関連 */
+.popular_page {
+  padding: 4rem;
+}
+
+  .popular_dish {
+    flex-direction: column;
+  }
+
+  .popular_dish_img {
+    width: 100%;
+  }
 }
 
 /* レスポンシブ対応(大きいディスプレイ向け) */
@@ -485,5 +579,10 @@
     max-width: 1440px;
     margin: 0 auto;
     background-color: white;
+  }
+
+  .popular_page {
+    max-width: 1440px;
+    margin: 0 auto;
   }
 }
