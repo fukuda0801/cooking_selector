@@ -9,16 +9,6 @@
     <% else %>
       <h4 class="search_dish_genre">全てのジャンルの料理が表示されます。</h4>
     <% end %>
-    <%= paginate @results %>
-    <div class="search_dishes">
-      <% @results.each do |dish| %>
-        <div class="search_dish_content">
-          <%= link_to dish_path(dish.id) do %>
-            <%= image_tag(dish.image, class: "search_dish_img", alt: "料理画像") if dish.image.attached? %>
-            <p class="search_dish_name"><%= dish.name %></p>
-          <% end %>
-        </div>
-      <% end %>
-    </div>
+    <%= render 'dishes_group', dishes: @results %>
   </div>
 </div>

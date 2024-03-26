@@ -60,4 +60,32 @@ RSpec.describe 'Dishes', type: :request do
       expect(response.body).to include "<title>Cooking Selector - ジャンル検索結果</title>"
     end
   end
+
+  describe 'GET/keyword' do
+    before do
+      get keyword_dishes_path, params: { keyword: "親子丼" }
+    end
+
+    it "キーワード検索結果ページが200のレスポンスを返すこと" do
+      expect(response).to have_http_status(200)
+    end
+
+    it "ページタイトルがCooking Selector - キーワード検索結果となること" do
+      expect(response.body).to include "<title>Cooking Selector - キーワード検索結果</title>"
+    end
+  end
+
+  describe 'GET/popular' do
+    before do
+      get popular_dishes_path
+    end
+
+    it "ランキングページが200のレスポンスを返すこと" do
+      expect(response).to have_http_status(200)
+    end
+
+    it "ページタイトルがCooking Selector - ランキングトップ10となること" do
+      expect(response.body).to include "<title>Cooking Selector - ランキングトップ10</title>"
+    end
+  end
 end

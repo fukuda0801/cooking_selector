@@ -151,6 +151,52 @@
   border: 2px solid #ffad48;
 }
 
+/* キーワード検索部分 */
+.home_keyword {
+  background-color: #f9951aca;
+}
+
+.home_keyword_content {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  padding: 0.3rem 10rem;
+
+}
+
+.home_keyword_title {
+  font-size: 1.2rem;
+  padding-right: 1rem;
+  padding-top: 0.7rem;
+}
+
+.keyword_form {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+}
+
+.keyword_field {
+  border-radius: 2rem;
+  box-shadow: none;
+  border: 2px solid #666;
+  padding-left: 1rem;
+  margin-right: 1rem;
+  width: 60%;
+  flex-grow: 1;
+}
+
+.keyword_btn {
+  color: #666;
+  background-color: white;
+  border-radius: 5px;
+  padding: 0.2rem 0.4rem;
+  border: 2px solid #666;
+}
+
+
 /* ジャンル検索部分*/
 
 .home_search {
@@ -222,6 +268,49 @@
   border: 2px solid #ffad48;
 }
 
+/* 人気ランキング部分 */
+.home_popular {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+.home_popular_content {
+  flex: 1;
+  width: 50%;
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.home_popular::before {
+  content: "";
+  flex: 1;
+  background-image: image-url('popular_search.jpeg');
+  background-size: cover;
+  background-position: center;
+}
+
+.home_popular_title {
+  margin: 3rem 2rem;
+  padding-bottom:0.2rem;
+  border-bottom: solid 3px #ffad48;
+  font-size: 1.5rem;
+  font-weight: 550;
+}
+
+.home_popular_text {
+  margin: 4rem;
+  padding: 1.5rem;
+  transition: transform 0.3s ease;
+  font-size: 1.2rem;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.home_popular_text:hover {
+  transform: scale(1.05);
+}
+
 .home_section_image {
   display: none;
 }
@@ -232,24 +321,24 @@
 
 /* レスポンシブ対応(スマホ向け) */
 @media (max-width: 500px) {
-  .home_random, .home_condition, .home_search {
+  .home_random, .home_condition, .home_search, .home_popular {
     flex-direction: column-reverse;
     justify-content: center;
   }
 
-  .home_random_content, .home_condition_content, .home_search_content {
+  .home_random_content, .home_condition_content, .home_search_content, .home_popular_content {
     width: 100%;
     margin-bottom: 2rem;
   }
 
-  .home_random_title, .home_condition_title, .home_search_title {
+  .home_random_title, .home_condition_title, .home_search_title, .home_popular_title {
     font-size: 1.2rem;
     margin: 1rem;
     overflow: visible;
     text-overflow: clip;
   }
 
-  .home_random_text, .home_condition_text, .home_search_text {
+  .home_random_text, .home_condition_text, .home_search_text, .home_popular_text {
     margin: 1rem;
     font-size: 0.8rem;
 
@@ -286,7 +375,6 @@
     display: block;
     width: auto;
     height: 200px;
-    margin-top: 20px;
     object-fit: cover;
   }
 
@@ -295,14 +383,31 @@
   }
 }
 
+@media (max-width: 670px) {
+  .home_keyword_content {
+    padding: 0.3rem 1rem;
+    font-size: 0.8rem;
+  }
+
+  .home_keyword_title {
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 670px) and (max-width: 960px) {
+  .home_keyword_content {
+    padding: 0.3rem 3rem;
+  }
+}
+
 /* レスポンシブ対応(タブレット向け) */
 @media (min-width: 501px) and (max-width: 960px) {
-  .home_random, .home_condition, .home_search {
+  .home_random, .home_condition, .home_search, .home_popular {
     flex-direction: column-reverse;
     justify-content: center;
   }
 
-  .home_random_content, .home_condition_content, .home_search_content {
+  .home_random_content, .home_condition_content, .home_search_content, .home_popular_content {
     width: 100%;
     margin-bottom: 2rem;
   }
@@ -333,4 +438,12 @@ body {
   position: sticky;
   top: 100vh;
   width: 100%;
+}
+
+/* レスポンシブ対応(大きいディスプレイ向け) */
+@media screen and (min-width: 1441px) {
+  .home_keyword_content {
+    max-width: 1440px;
+    margin: 0 auto;
+  }
 }

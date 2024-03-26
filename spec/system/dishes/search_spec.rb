@@ -28,9 +28,9 @@ RSpec.describe "search", type: :system do
         select "和食", from: "q[genre_eq]"
         click_button "Search Dish"
       end
-      expect(page).to have_selector ".search_dish_name", count: 6
+      expect(page).to have_selector ".condition_dish_name", count: 6
       click_link "次"
-      expect(page).to have_selector ".search_dish_name", count: 1
+      expect(page).to have_selector ".condition_dish_name", count: 1
     end
   end
 

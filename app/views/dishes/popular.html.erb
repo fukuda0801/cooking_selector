@@ -1,0 +1,21 @@
+<% content_for :title, "ランキングトップ10" %>
+
+<div class="popular_whole">
+  <div class="popular_page">
+    <h4 class="popular_page_title">お気に入り登録数トップ１０！</h4>
+    <div class="popular_main">
+      <% @popular_dishes.each do |dish| %>
+        <div class="popular_dish">
+          <div class="popular_details">
+            <p class="popular_dish_rank">第<%= dish.popularity_rank %>位</p>
+            <p><%= dish.name %></p>
+            <p>お気に入り登録者数：<%= dish.favorites_count %>人</P>
+            <p><%= dish.description %></p>
+            <p>料理のレシピなど詳細情報は<%= link_to "こちら", dish_path(dish.id), class: "popular_dish_link" %>から</p>
+          </div>
+          <%= image_tag(dish.image, alt: "料理画像", class: "popular_dish_img") if dish.image.attached? %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

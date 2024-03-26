@@ -1,0 +1,11 @@
+<%= paginate dishes %>
+<div class="condition_dishes">
+  <% dishes.each do |dish| %>
+    <div class="condition_dish_content">
+      <%= link_to dish_path(dish.id) do %>
+        <%= image_tag(dish.image, class: "condition_dish_img", alt: "料理画像") if dish.image.attached? %>
+        <p class="condition_dish_name"><%= dish.name %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>

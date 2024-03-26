@@ -1,6 +1,16 @@
 <% content_for :title, "ホーム" %>
 
 <div class="home_main">
+  <div class="home_keyword">
+    <div class="home_keyword_content">
+      <p class="home_keyword_title">キーワード料理検索</p>
+      <%= form_with url: keyword_dishes_path, local: true, method: :get, class: "keyword_form" do |f| %>
+        <%= f.text_field :keyword, placeholder: "材料、または料理名を入力してください", class: "keyword_field" %>
+        <%= f.submit "検索", class: "keyword_btn" %>
+      <% end %>
+    </div>
+  </div>
+
   <div class="home_random">
     <div class="home_random_content">
       <h4 class="home_random_title">〜 今日の食事を決められない、<br class="mobile_br">そこのあなた！ 〜</h4>
@@ -38,7 +48,7 @@
       <p class="home_search_text">その日の気分でどうしても食べたいジャンルの<br>
       料理がある時、我慢したくないですよね。<br>
       そんな時は<span class="home_under">料理の種類</span>から<br>
-      今日の食事を決めましょう！</p>
+      今日の食事を決めてみましょう！</p>
       <%= search_form_for @q, url: search_dishes_path, method: :get do |f| %>
         <%= f.select :genre_eq,
         options_for_select(Dish.select(:genre).distinct.pluck(:genre)),
@@ -49,5 +59,16 @@
       <% end %>
     </div>
     <%= image_tag 'search.jpg', class: "home_section_image" %>
+  </div>
+
+  <div class="home_popular">
+    <div class="home_popular_content">
+      <h4 class="home_popular_title">〜 人気の料理から決めたい、<br class="mobile_br">そこのあなた！ 〜</h4>
+      <p class="home_popular_text">人気のあるメニューランキング<br>
+      <span class="home_under">トップ１０</span>から<br>
+      今日の食事を決めてみましょう！</p>
+      <%= link_to "Search Dish", popular_dishes_path, method: :get, class: "home_random_btn" %>
+    </div>
+    <%= image_tag 'popular_search.jpeg', class: "home_section_image" %>
   </div>
 </div>

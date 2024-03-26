@@ -11,6 +11,11 @@ class DishesController < ApplicationController
     @recipes = @rakuten_service.fetch_recipes(@dish.category_full_id)
   end
 
+  def keyword
+    @dishes = Dish.reference(params[:keyword]).page(params[:page])
+    @reference_word = params[:keyword]
+  end
+
   def search
     @q = Dish.ransack(params[:q])
     @results = @q.result(distinct: true).with_attached_image.page(params[:page])
@@ -20,6 +25,10 @@ class DishesController < ApplicationController
   def condition
     @selected_tag_names = params.dig(:search, :tags).values.compact_blank
     @dishes = Dish.search_by_tag_names(@selected_tag_names).with_attached_image.page(params[:page])
+  end
+
+  def popular
+    @popular_dishes = Dish.popular(10)
   end
 
   private

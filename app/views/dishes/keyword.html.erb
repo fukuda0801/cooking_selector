@@ -1,0 +1,13 @@
+<% content_for :title, "キーワード検索結果" %>
+
+<div class="keyword_dish_page">
+  <div class="keyword_dish_main">
+    <h4 class="keyword_dish_title">キーワード検索結果</h4>
+    <p class="keyword_name">キーワード：<%= @reference_word %></p>
+    <% if @dishes.present? %>
+      <%= render 'dishes_group', dishes: @dishes %>
+    <% else %>
+      <p>キーワードに一致する料理が見つかりませんでした。</p>
+    <% end %>
+  </div>
+</div>
