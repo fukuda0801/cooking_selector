@@ -35,6 +35,7 @@
         </div>
       </div>
     </div>
+
     <div class="show_dish_recipe">
       <p class="show_dish_recipe_title">関連するレシピ一覧 (楽天レシピ様より)</p>
       <p class="show_dish_recipe_intro">レシピ名を選択すると外部サイトへ移動します。</p>
@@ -53,5 +54,7 @@
         <p>レシピが見つかりませんでした。</p>
       <% end %>
     </div>
+
+    <%= render partial: 'comments/content_form', locals: { dish: @dish, comment: @comment, comments: @comments } %>
   </div>
 </div>

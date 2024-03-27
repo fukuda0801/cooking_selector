@@ -3,6 +3,7 @@ class Dish < ApplicationRecord
   has_many :tags, through: :dish_tags
   has_many :user_dishes, dependent: :destroy
   has_many :users, through: :user_dishes
+  has_many :comments, dependent: :destroy
   has_one_attached :image
 
   validates :name, presence: true, uniqueness: true

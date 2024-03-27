@@ -1,0 +1,31 @@
+<div class="comment_page">
+  <% if user_signed_in? %>
+    <div class="comment_form">
+      <%= form_with model: [dish, comment], local: true do |f| %>
+        <%= f.text_area :content, class: "comment_field", placeholder: "50文字以内で記述してください" %>  
+        <%= f.submit "投稿する", class: "comment_btn" %>
+      <% end %>
+      <p>※ コメントは公序良俗に反しない内容にしてください。</p>
+    </div>
+  <% else %>
+    <p class="comment_intro">〜 コメントを投稿するにはログインが必要です。 〜</p>
+  <% end %>
+
+  <div class="comment_main">
+    <h4 class="comment_title">コメント一覧</h4>
+    <%= paginate comments %>
+    <% if comments.present? %>
+      <% comments.each do |content| %>
+        <div class="comment_detail">
+          <p>投稿者: <%= content.user.name %>様</p>
+          <p>コメント: <%= content.content %></p>
+          <% if user_signed_in? && current_user.id == content.user_id %>
+            <%= link_to '削除', dish_comment_path(content.dish, content), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'comment_delete_btn' %>
+          <% end %>
+        </div>
+      <% end %>
+    <% else %>
+      <p class="comment_intro">コメントはまだありません。</p>
+    <% end %>
+  </div>
+</div>
