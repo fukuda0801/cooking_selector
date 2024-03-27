@@ -2,9 +2,11 @@ require 'rails_helper'
 
 RSpec.describe "show", type: :system do
   let!(:user) { create(:user) }
+  let!(:another_user) { create(:user) }
   let!(:dish) { create(:dish, :with_image, name: "オムライス", category_full_id: "30") }
   let!(:tag) { create(:tag) }
   let!(:dish_tag) { create(:dish_tag, dish: dish, tag: tag) }
+  let!(:comment) { create(:comment, user: user, dish: dish) }
 
   describe "お気に入りボタン" do
     context "ユーザーがログイン済みで、表示している料理がお気に入り登録していない場合" do
@@ -79,6 +81,46 @@ RSpec.describe "show", type: :system do
         allow(@rakuten_service_mock).to receive(:fetch_recipes).with("30").and_return({ "result" => [] })
         visit dish_path(dish.id)
         expect(page).to have_content "レシピが見つかりませんでした"
+      end
+    end
+  end
+
+  describe "コメント機能" do
+    context "ログインしている場合" do
+      it "コメントを投稿できること" do
+        sign_in user
+        visit dish_path(dish.id)
+        fill_in 'comment_content', with: "美味しい"
+        click_on "投稿する"
+        within('.comment_main') do
+          expect(page).to have_content user.name
+          expect(page).to have_content "美味しい"
+        end
+      end
+
+      it "ログインしているユーザーが他のユーザーの投稿を削除できないこと" do
+        sign_in another_user
+        visit dish_path(dish.id)
+        expect(page).not_to have_content "削除"
+      end
+
+      it "ログインしているユーザーが投稿したコメントのみ削除できること" do
+        sign_in user
+        visit dish_path(dish.id)
+        click_on "削除"
+        expect(page).to have_content "コメントはまだありません。"
+      end
+    end
+
+    context "ログインしていない場合" do
+      it "コメントを投稿できないこと" do
+        visit dish_path(dish.id)
+        expect(page).to have_content "コメントを投稿するにはログインが必要です。"
+      end
+
+      it "他のユーザーが投稿した内容を閲覧できること" do
+        visit dish_path(dish.id)
+        expect(page).to have_content "美味しかったです。"
       end
     end
   end
