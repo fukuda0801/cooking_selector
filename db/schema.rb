@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2024_02_28_083343) do
+ActiveRecord::Schema.define(version: 2024_03_26_132450) do
 
   create_table "active_admin_comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "namespace"
@@ -64,6 +64,16 @@ ActiveRecord::Schema.define(version: 2024_02_28_083343) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "comments", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.text "content"
+    t.bigint "user_id", null: false
+    t.bigint "dish_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["dish_id"], name: "index_comments_on_dish_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
   create_table "dish_tags", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
@@ -127,6 +137,8 @@ ActiveRecord::Schema.define(version: 2024_02_28_083343) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "comments", "dishes"
+  add_foreign_key "comments", "users"
   add_foreign_key "dish_tags", "dishes"
   add_foreign_key "dish_tags", "tags"
   add_foreign_key "user_dishes", "dishes"

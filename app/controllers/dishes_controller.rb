@@ -2,7 +2,9 @@ class DishesController < ApplicationController
   before_action :set_rakuten_service, only: [:show, :random]
 
   def show
-    @dish = Dish.find(params[:id])
+    @dish = Dish.with_attached_image.find(params[:id])
+    @comment = Comment.new
+    @comments = @dish.comments.order(created_at: :desc).includes(:user).page(params[:page]).per(5)
     @recipes = @rakuten_service.fetch_recipes(@dish.category_full_id)
   end
 
