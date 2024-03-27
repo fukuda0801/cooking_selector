@@ -10,7 +10,7 @@ class DishesController < ApplicationController
 
   def random
     @dish = Dish.includes(:tags).random
-    @recipes = @rakuten_service.fetch_recipes(@dish.category_full_id)
+    redirect_to dish_path(@dish)
   end
 
   def keyword

@@ -19,20 +19,6 @@ RSpec.describe 'Dishes', type: :request do
     end
   end
 
-  describe 'GET /random' do
-    before do
-      get random_dishes_path
-    end
-
-    it "ランダム料理ページが200のレスポンスを返すこと" do
-      expect(response).to have_http_status(200)
-    end
-
-    it "ページタイトルがCooking Selector - ランダム料理となること" do
-      expect(response.body).to include "<title>Cooking Selector - ランダム料理</title>"
-    end
-  end
-
   describe 'GET /condition' do
     before do
       get condition_dishes_path, params: { search: { tags: { "卵" => "卵" } } }
