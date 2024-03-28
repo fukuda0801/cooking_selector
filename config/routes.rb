@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show, :destroy] do
     member do
       get :favorites
+      get :comments
     end
   end
   resources :user_dishes, only: [:create, :destroy]

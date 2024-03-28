@@ -18,6 +18,7 @@
       <% comments.each do |content| %>
         <div class="comment_detail">
           <p>投稿者: <%= content.user.name %>様</p>
+          <p>投稿日: <%= content.created_at.to_s(:custom_date) %></p>
           <p>コメント: <%= content.content %></p>
           <% if user_signed_in? && current_user.id == content.user_id %>
             <%= link_to '削除', dish_comment_path(content.dish, content), method: :delete, data: { confirm: '本当に削除しますか？' }, class: 'comment_delete_btn' %>
