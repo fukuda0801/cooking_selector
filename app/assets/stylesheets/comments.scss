@@ -73,6 +73,15 @@
   overflow-wrap: break-word;
 }
 
+.user_comment_dish_link {
+  color: #ffad48;
+  text-decoration: none;
+}
+
+.user_comment_dish_link:hover {
+  color: #ffad48;
+}
+
 @media (max-width: 500px) {
   .comment_title {
     font-size: 1rem;
