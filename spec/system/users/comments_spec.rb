@@ -15,9 +15,14 @@ RSpec.describe "comments", type: :system do
 
       it "ユーザーコメント情報が表示されること" do
         visit comments_user_path(user.id)
-        expect(page).to have_content comment.dish.name
         expect(page).to have_content comment.created_at.to_s(:custom_date)
         expect(page).to have_content comment.content
+      end
+
+      it "料理名クリックで料理詳細ページへ遷移すること" do
+        visit comments_user_path(user.id)
+        click_on comment.dish.name
+        expect(current_path).to eq dish_path(comment.dish.id)
       end
 
       it "他のユーザーのコメントが表示されないこと" do
