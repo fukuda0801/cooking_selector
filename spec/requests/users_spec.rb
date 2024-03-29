@@ -77,4 +77,19 @@ RSpec.describe 'Users', type: :request do
       expect(response.body).to include "<title>Cooking Selector - お気に入り料理</title>"
     end
   end
+
+  describe 'GET /users/:id/comments' do
+    before do
+      sign_in user
+      get comments_user_path(user.id)
+    end
+
+    it "お気に入り料理ページが200のレスポンスを返すこと" do
+      expect(response).to have_http_status(200)
+    end
+
+    it "ページタイトルがCooking selector - お気に入り料理" do
+      expect(response.body).to include "<title>Cooking Selector - コメント一覧</title>"
+    end
+  end
 end
